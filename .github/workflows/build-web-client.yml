@@ -1,7 +1,7 @@
 name: Build Web Client
 on: [push]
 jobs:
-  build-website:
+  build-react-website:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,7 +17,6 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: test
-      - name: Install make
-        run: sudo apt-get install -y make
+      run: sudo apt-get install -y make
       run: make
       run: make web
