@@ -1,7 +1,7 @@
 name: Build Web Client
 on: [push]
 jobs:
-  check-bats-version:
+  build-website:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,6 +19,5 @@ jobs:
           cmd: test
       - name: Install make
         run: sudo apt-get install -y make
-
       run: make
       run: make web
