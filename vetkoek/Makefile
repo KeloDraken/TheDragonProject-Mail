@@ -2,7 +2,7 @@ init:
 	yarn
 
 page: 
-	yarn run newpage
-
+	python scripts/manage.py startapp
+ 
 serve: 
 	yarn run start

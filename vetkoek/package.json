@@ -22,8 +22,6 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "newpage": "python scripts/manage.py startapp",
-    "component": "python scripts/startcomp.py",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
