@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { GoogleLogin } from "react-google-login";
+import { SafeAreaView, StatusBar, Text, useColorScheme } from "react-native";
+import { handleLogin } from "./utils/sdk";
 
-function App() {
+const googleClientId =
+  "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";
+
+const App = () => {
+  const isDarkMode = useColorScheme() === "dark";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SafeAreaView>
+      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+      <Text>Hello World</Text>
+      <GoogleLogin
+        clientId={googleClientId}
+        buttonText="LOGIN WITH GOOGLE"
+        onSuccess={response => handleLogin(response)}
+        render={renderProps => (
+          <button
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+            type="button"
+            className="login-with-google-btn">
+            Sign in with Google
+          </button>
+        )}
+        onFailure={err => console.log('Google Login failed', err)}
+        isSignedIn={true}
+      />
+    </SafeAreaView>
   );
-}
+};
 
 export default App;
