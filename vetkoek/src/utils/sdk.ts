@@ -1,4 +1,10 @@
-export class GoogleOAuth {
+interface OAuthInterface {
+  getClientID(): any;
+  getClientSecret(): any;
+  getBaseURL(): string;
+}
+
+export class GoogleOAuth implements OAuthInterface {
   private drfClientId = process.env.REACT_APP_DRF_CLIENT_ID;
   private drfClientSecret = process.env.REACT_APP_DRF_CLIENT_SECRET;
   private baseURL = "http://localhost:8000";
