@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import {
   Platform,
   SafeAreaView,
@@ -48,17 +48,22 @@ const App = () => {
   }
 
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
-      <Text>Hello World</Text>
-      <GoogleLogin
-        clientId={googleClientId}
-        buttonText="LOGIN WITH GOOGLE"
-        onSuccess={handleLogin}
-        onFailure={(err) => console.log("Google Login failed", err)}
-        isSignedIn={true}
-      />
-    </SafeAreaView>
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <SafeAreaView>
+        <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+        <Text>Hello World</Text>
+
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+            handleLogin(credentialResponse);
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
+      </SafeAreaView>
+    </GoogleOAuthProvider>
   );
 };
 
