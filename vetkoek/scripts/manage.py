@@ -1,37 +1,51 @@
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+class Manager:
+    def __init__(self):
+        self.base_dir = Path(__file__).resolve().parent.parent
 
-def has_special_char(text: str) -> bool:
-    return any(c for c in text if not c.isalnum() and not c.isspace())
+    def _has_special_char(self, text: str) -> bool:
+        return any(c for c in text if not c.isalnum() and not c.isspace())
 
+    def create_page(self, page_name: str) -> None:
+        if " " in page_name:
+            raise ValueError("Page name cannot contain spaces.")
 
-def start_page_command(app_name: str):
-    if " " in app_name:
-        raise ValueError("App name cannot contain spaces.")
+        if self._has_special_char(page_name):
+            raise ValueError("Page name cannot contain special characters.")
 
-    if has_special_char(app_name):
-        raise ValueError("App name cannot contain special characters.")
+        app_directory = self.base_dir / "src" / "pages"
+        new_app_directory = Path(str(app_directory) + os.sep + page_name)
 
-    app_directory = BASE_DIR / "src" / "pages"
-    new_app_directory = Path(str(app_directory) + os.sep + app_name)
+        if os.path.exists(new_app_directory):
+            raise ValueError("Directory already exists.")
 
-    if os.path.exists(new_app_directory):
-        raise ValueError("Directory already exists.")
+        os.makedirs(new_app_directory)
+        os.makedirs(new_app_directory / "styles")
 
-    os.makedirs(new_app_directory)
-    os.makedirs(new_app_directory / "styles")
-
-    with open(f"{new_app_directory}/index.tsx", "w") as init:
-        code: str = """function tempName(): JSX.Element {
-  return <h1>Created tempName</h1>;
+        with open(f"{new_app_directory}/index.tsx", "w") as init:
+            code: str = """function tempName(): JSX.Element {
+    return <h1>tempName</h1>;
 };
 
 export default tempName;
 """
-        init.write(code.replace("tempName", app_name))
+            init.write(code.replace("tempName", page_name))
+
+
+def run(command) -> None:
+    manager = Manager()
+
+    if command == "startpage":
+        try:
+            page_name: str = input("New page name: ").strip()
+            manager.create_page(page_name.capitalize())
+        except KeyboardInterrupt:
+            print("Aborted!")
+    else:
+        print("Unknown command: %s" % command)
 
 
 if __name__ == "__main__":
@@ -41,10 +55,4 @@ if __name__ == "__main__":
         print("Missing arguments")
         sys.exit(1)
 
-    command: str = sys.argv[1]
-
-    if command == "startapp":
-        app_name: str = input("New page name: ").strip()
-        start_page_command(app_name)
-    else:
-        print("Unknown command: %s" % command)
+    run(sys.argv[1])
