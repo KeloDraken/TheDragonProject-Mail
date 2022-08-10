@@ -8,8 +8,8 @@ import {
   Text,
   useColorScheme,
 } from "react-native";
-import { baseURL } from "../utils";
-import { google } from "../utils/oauth";
+import { baseURL } from "../libs";
+import { google } from "../libs/oauth";
 
 const googleClientId: string =
   "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";
