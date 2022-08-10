@@ -1,13 +1,11 @@
 interface OAuthInterface {
-  getClientID(): any;
-  getClientSecret(): any;
-  getBaseURL(): string;
+  getClientID(): string | undefined;
+  getClientSecret(): string | undefined;
 }
 
 export class GoogleOAuth implements OAuthInterface {
   private drfClientId = process.env.REACT_APP_DRF_CLIENT_ID;
   private drfClientSecret = process.env.REACT_APP_DRF_CLIENT_SECRET;
-  private baseURL = "http://localhost:8000";
 
   public getClientID() {
     return this.drfClientId;
@@ -17,13 +15,11 @@ export class GoogleOAuth implements OAuthInterface {
     return this.drfClientSecret;
   }
 
-  public getBaseURL() {
-    return this.baseURL;
-  }
-
   public getExpiryDate(): Date {
     const expiryDate: Date = new Date();
     expiryDate.setMonth(expiryDate.getMonth() - 3);
     return expiryDate;
   }
 }
+
+export const google = new GoogleOAuth();
