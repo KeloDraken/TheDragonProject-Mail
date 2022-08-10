@@ -11,7 +11,10 @@ SECRET_KEY = "?E(H+MbQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -26,6 +29,8 @@ INSTALLED_APPS = [
     "social_django",
     "drf_social_oauth2",
     "corsheaders",
+    # KeloDraken apps
+    "apps.accounts",
 ]
 
 MIDDLEWARE = [
@@ -101,8 +106,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8080",
     "http://localhost:8080",
-    "http://localhost:3000",
 ]
 
 REST_FRAMEWORK = {
@@ -113,13 +118,11 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    # Google OAuth2
     "social_core.backends.google.GoogleOAuth2",
-    # drf-social-oauth2
     "drf_social_oauth2.backends.DjangoOAuth2",
-    # Django
     "django.contrib.auth.backends.ModelBackend",
 )
+AUTH_USER_MODEL = "accounts.User"
 
 # Google configuration
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
