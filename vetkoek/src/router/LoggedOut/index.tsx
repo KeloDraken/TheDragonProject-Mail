@@ -7,7 +7,7 @@ export default function LoggedOutStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="landing"
+        name="app"
         component={LandingScreen}
         options={{ title: "KeloDraken Mail" }}
       />

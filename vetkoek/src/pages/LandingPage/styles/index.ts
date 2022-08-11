@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
   },
   mailEmoji: {
     marginLeft: wp("5"),
+    fontFamily: "Merriweather",
     fontSize: wp("20"),
     textShadowColor: "#3f3f3f",
     textShadowOffset: { width: wp("1"), height:  wp("1") },
