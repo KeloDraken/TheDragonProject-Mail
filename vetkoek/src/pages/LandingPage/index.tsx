@@ -1,25 +1,17 @@
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import {
-  Platform,
-  SafeAreaView,
-  StatusBar,
-  Text,
-  useColorScheme,
-} from "react-native";
+import { GoogleLogin } from "@react-oauth/google";
+import { SafeAreaView, Text, View } from "react-native";
 import { baseURL } from "../../libs";
 import { google } from "../../libs/oauth";
-
-const googleClientId: string =
-  "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";
+import { styles } from "./styles";
+import Logo from "../../components/Logo";
+import Description from "../../components/Description";
 
 export default function LandingPage() {
-  const isDarkMode: boolean = useColorScheme() === "dark";
   const [, setCookie] = useCookies();
 
   function setItem(name: string, value: string): void {
-    if (Platform.OS !== "web") return;
     setCookie(name, value, {
       expires: google.getExpiryDate(),
     });
@@ -46,21 +38,24 @@ export default function LandingPage() {
   }
 
   return (
-    <GoogleOAuthProvider clientId={googleClientId}>
-      <SafeAreaView>
-        <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
-        <Text>Hello World</Text>
-
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-            handleLogin(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
-      </SafeAreaView>
-    </GoogleOAuthProvider>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <View style={styles.columnLeft}>
+          <Logo />
+          <Text allowFontScaling={false} style={styles.mailEmoji}>@</Text>
+        </View>
+        <View style={styles.columnRight}>
+          <Description />
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              handleLogin(credentialResponse);
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
