@@ -1,15 +1,15 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LandingScreen } from "../../pages";
+import { HomeScreen } from "../../pages";
 
 const Stack = createNativeStackNavigator();
 
-export default function LoggedOutStack() {
+export default function LoggedInStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="landing"
-        component={LandingScreen}
-        options={{ title: "KeloDraken Mail" }}
+        name="imbox"
+        component={HomeScreen}
+        options={{ title: "KOMN" }}
       />
     </Stack.Navigator>
   );
