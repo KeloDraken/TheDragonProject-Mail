@@ -34,16 +34,41 @@ export default tempName;
 """
             init.write(code.replace("tempName", page_name))
 
+    def create_component(self, component_name: str) -> None:
+        if " " in component_name:
+            raise ValueError("Component name cannot contain spaces.")
+
+        if self._has_special_char(component_name):
+            raise ValueError("Component name cannot contain special characters.")
+
+        app_directory = self.base_dir / "src" / "components"
+        new_app_directory = Path(str(app_directory) + os.sep + component_name)
+
+        if os.path.exists(new_app_directory):
+            raise ValueError("Directory already exists.")
+
+        os.makedirs(new_app_directory)
+        os.makedirs(new_app_directory / "styles")
+
+        with open(f"{new_app_directory}/index.tsx", "w") as init:
+            code: str = """function tempName(): JSX.Element {
+        return <h1>tempName</h1>;
+    };
+
+    export default tempName;
+    """
+            init.write(code.replace("tempName", component_name))
+
 
 def run(command) -> None:
     manager = Manager()
 
     if command == "startpage":
-        try:
-            page_name: str = input("New page name: ").strip()
-            manager.create_page(page_name.capitalize())
-        except KeyboardInterrupt:
-            print("Aborted!")
+        page_name: str = input("New page name: ").strip()
+        manager.create_page(page_name.capitalize())
+    elif command == "create_component":
+        component_name: str = input("New page name: ").strip()
+        manager.create_component(component_name.capitalize())
     else:
         print("Unknown command: %s" % command)
 
@@ -55,4 +80,7 @@ if __name__ == "__main__":
         print("Missing arguments")
         sys.exit(1)
 
-    run(sys.argv[1])
+    try:
+        run(sys.argv[1])
+    except KeyboardInterrupt:
+        print("Aborted!")
