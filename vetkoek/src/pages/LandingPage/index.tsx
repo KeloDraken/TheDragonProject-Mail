@@ -9,6 +9,7 @@ import {
 export default function LandingPage(): JSX.Element {
   return (
     <SafeAreaView>
+      <View style={styles.bar} />
       <View style={styles.container}>
         <LogoComponent />
         <View style={styles.hero}>
@@ -16,6 +17,7 @@ export default function LandingPage(): JSX.Element {
           <GoogleLoginButton />
         </View>
       </View>
+      <View style={styles.bar} />
     </SafeAreaView>
   );
 }

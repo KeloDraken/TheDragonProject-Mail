@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp
+  heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignSelf: "center",
-    paddingVertical: hp("2.5"),
+    paddingVertical: hp("2.7"),
     paddingHorizontal: wp("2.5"),
     backgroundColor: "#000000",
     borderRadius: wp("3"),
@@ -24,9 +24,17 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: "Lora",
-    fontSize: wp("2"),
+    fontSize: wp("1.9"),
     fontWeight: "700",
     margin: "auto",
     color: "#ffffff",
+  },
+  footnote: {
+    color: "#595959",
+    marginTop: hp("16"),
+    flexDirection: "column",
+    alignSelf: "center",
+    fontFamily: "Lora",
+    fontSize: wp("1.4"),
   },
 });
