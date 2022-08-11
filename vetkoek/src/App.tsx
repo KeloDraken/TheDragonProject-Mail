@@ -5,11 +5,21 @@ import Router from "./router";
 const googleClientId: string =
   "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";
 
+const linking = {
+  prefixes: ["http://localhost:8008", "https://mail.kelodraken.com"],
+  config: {
+    screens: {
+      LandingScreen: "",
+      HomeScreen: "mail/u/0/",
+    },
+  },
+};
+
 function App(): JSX.Element {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <GoogleOAuthProvider clientId={googleClientId}>
-       <Router />
+        <Router />
       </GoogleOAuthProvider>
     </NavigationContainer>
   );
