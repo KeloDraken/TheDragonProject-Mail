@@ -1,4 +1,4 @@
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import { styles } from "./styles";
 import {
   DescriptionComponent,
@@ -7,6 +7,8 @@ import {
 } from "../../components";
 
 export default function LandingPage(): JSX.Element {
+  const d = new Date();
+let year = d.getFullYear();
   return (
     <SafeAreaView>
       <View style={styles.bar} />
@@ -17,7 +19,9 @@ export default function LandingPage(): JSX.Element {
           <GoogleLoginButton />
         </View>
       </View>
-      <View style={styles.bar} />
+      <View style={styles.bar}>
+        <Text allowFontScaling={false} style={styles.copyright}>{'\u00A9'} {year} Samkelo Rocks (Pty) Ltd.</Text>
+      </View>
     </SafeAreaView>
   );
 }
