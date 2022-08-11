@@ -1,5 +1,5 @@
 import Description from "./Description";
-import GoogleLogin from "./GoogleLogin";
+import GoogleLogin from "./Google";
 import Logo from "./Logo";
 
 export const DescriptionComponent = Description;
