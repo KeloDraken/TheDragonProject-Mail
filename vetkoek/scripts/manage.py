@@ -65,10 +65,10 @@ def run(command) -> None:
 
     if command == "startpage":
         page_name: str = input("New page name: ").strip()
-        manager.create_page(page_name.capitalize())
+        manager.create_page(page_name)
     elif command == "create_component":
         component_name: str = input("New page name: ").strip()
-        manager.create_component(component_name.capitalize())
+        manager.create_component(component_name)
     else:
         print("Unknown command: %s" % command)
 

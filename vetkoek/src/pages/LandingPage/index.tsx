@@ -6,7 +6,7 @@ import {
   LogoComponent,
 } from "../../components";
 
-export default function LandingPage() {
+export default function LandingPage(): JSX.Element {
   return (
     <SafeAreaView>
       <View style={styles.container}>
