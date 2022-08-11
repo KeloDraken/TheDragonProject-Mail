@@ -9,21 +9,25 @@ class Manager:
     def _has_special_char(self, text: str) -> bool:
         return any(c for c in text if not c.isalnum() and not c.isspace())
 
-    def create_page(self, page_name: str) -> None:
+    def _validate_name(self, page_name: str) -> None:
         if " " in page_name:
-            raise ValueError("Page name cannot contain spaces.")
+            raise ValueError("Name cannot contain spaces.")
 
         if self._has_special_char(page_name):
-            raise ValueError("Page name cannot contain special characters.")
+            raise ValueError("Name cannot contain special characters.")
 
-        app_directory = self.base_dir / "src" / "pages"
-        new_app_directory = Path(str(app_directory) + os.sep + page_name)
-
+    def _create_directories(self, new_app_directory: Path):
         if os.path.exists(new_app_directory):
             raise ValueError("Directory already exists.")
 
         os.makedirs(new_app_directory)
         os.makedirs(new_app_directory / "styles")
+
+    def _create_files(self, page_name, parent_directory: str):
+        app_directory = self.base_dir / "src" / parent_directory
+        new_app_directory = Path(str(app_directory) + os.sep + page_name)
+
+        self._create_directories(new_app_directory)
 
         with open(f"{new_app_directory}/index.tsx", "w") as init:
             code: str = """function tempName(): JSX.Element {
@@ -34,40 +38,23 @@ export default tempName;
 """
             init.write(code.replace("tempName", page_name))
 
+    def create_page(self, page_name: str) -> None:
+        self._validate_name(page_name)
+        self._create_files(page_name, "pages")
+
     def create_component(self, component_name: str) -> None:
-        if " " in component_name:
-            raise ValueError("Component name cannot contain spaces.")
-
-        if self._has_special_char(component_name):
-            raise ValueError("Component name cannot contain special characters.")
-
-        app_directory = self.base_dir / "src" / "components"
-        new_app_directory = Path(str(app_directory) + os.sep + component_name)
-
-        if os.path.exists(new_app_directory):
-            raise ValueError("Directory already exists.")
-
-        os.makedirs(new_app_directory)
-        os.makedirs(new_app_directory / "styles")
-
-        with open(f"{new_app_directory}/index.tsx", "w") as init:
-            code: str = """function tempName(): JSX.Element {
-        return <h1>tempName</h1>;
-    };
-
-    export default tempName;
-    """
-            init.write(code.replace("tempName", component_name))
+        self._validate_name(component_name)
+        self._create_files(component_name, "components")
 
 
 def run(command) -> None:
     manager = Manager()
 
     if command == "startpage":
-        page_name: str = input("New page name: ").strip()
+        page_name: str = input("New Name: ").strip()
         manager.create_page(page_name)
     elif command == "create_component":
-        component_name: str = input("New page name: ").strip()
+        component_name: str = input("New Name: ").strip()
         manager.create_component(component_name)
     else:
         print("Unknown command: %s" % command)
