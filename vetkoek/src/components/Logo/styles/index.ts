@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
   },
   mail: {
     fontFamily: "Roboto",
-    fontSize: wp("2.9"),
+    fontSize: wp("2.8"),
     fontWeight: "600",
     marginLeft: hp("1"),
-    marginTop: hp("0.5"),
+    marginTop: hp("0.7"),
   },
 });
