@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     fontFamily: "Lora",
     fontSize: wp("1.8"),
+    fontWeight: "700",
     margin: "auto",
     color: "#ffffff",
   },
