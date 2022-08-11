@@ -25,5 +25,6 @@ export const styles = StyleSheet.create({
     marginLeft: wp("5"),
     color: "#7f7f7f",
     fontFamily: "Lora",
+    fontSize: wp("1")
   },
 });
