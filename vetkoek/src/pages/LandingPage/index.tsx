@@ -10,13 +10,8 @@ export default function LandingPage(): JSX.Element {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <View style={styles.columnLeft}>
-          <LogoComponent />
-          <Text allowFontScaling={false} style={styles.mailEmoji}>
-            @
-          </Text>
-        </View>
-        <View style={styles.columnRight}>
+        <LogoComponent />
+        <View style={styles.hero}>
           <DescriptionComponent />
           <GoogleLoginButton />
         </View>

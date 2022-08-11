@@ -12,7 +12,8 @@ function GoogleLogin(): JSX.Element {
   function handleLogin(response: any): void {
     axios
       .post(`${baseURL}/auth/convert-token`, {
-        token: response.accessToken,
+        headers: { Authorization: "Bearer AZc7QuMk1rZUFqDl3Vsjzcy5MNnmPK" },
+        token: response.code,
         backend: "google-oauth2",
         grant_type: "convert_token",
         client_id: google.getClientID(),

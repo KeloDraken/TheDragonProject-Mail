@@ -7,16 +7,23 @@ import {
 
 export const styles = StyleSheet.create({
     container: {
-        marginTop: hp("10"),
+        marginTop: hp("12"),
     },
     description: {
-        fontSize: wp("3"),
+        display: "flex",
+        flexDirection: "column",
+        alignSelf: "center",
+        fontSize: wp("2.6"),
         fontFamily: "Lora",
-        fontWeight: "600"
+        fontWeight: "600",
+        marginBottom: hp("1")
     },
     info:{
-        marginVertical: hp("3.5"),
-        fontSize: wp("2"),
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+        marginBottom: hp("3.5"),
+        fontSize: wp("1.8"),
         fontFamily: "Lora",
         fontWeight: "500"
     }

@@ -1,15 +1,19 @@
 import { StyleSheet } from "react-native";
 import {
   widthPercentageToDP as wp,
+  heightPercentageToDP as hp
 } from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginRight: wp("2"),
   },
   button: {
-    flex: 1 / 2,
+    flex: 1,
+    flexDirection: "column",
+    alignSelf: "center",
+    paddingVertical: hp("2.5"),
+    paddingHorizontal: wp("2.5"),
     backgroundColor: "#000000",
     borderRadius: wp("3"),
     shadowColor: "#3f3f3f",
@@ -20,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: "Lora",
-    fontSize: wp("1.8"),
+    fontSize: wp("2"),
     fontWeight: "700",
     margin: "auto",
     color: "#ffffff",
