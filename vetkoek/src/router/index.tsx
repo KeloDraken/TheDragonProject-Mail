@@ -1,16 +1,10 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LandingScreen } from "../pages";
-
-const LoggedOutStack = createNativeStackNavigator();
+import { Suspense } from "react";
+import LoggedOutStack from "./LoggedOut";
 
 export default function Router() {
   return (
-    <LoggedOutStack.Navigator>
-      <LoggedOutStack.Screen
-        name="landing"
-        component={LandingScreen}
-        options={{ title: "KeloDraken Mail" }}
-      />
-    </LoggedOutStack.Navigator>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <LoggedOutStack />
+    </Suspense>
   );
 }

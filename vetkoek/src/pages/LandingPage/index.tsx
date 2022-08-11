@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View } from "react-native";
+import { Button, SafeAreaView, Text, View } from "react-native";
 import { styles } from "./styles";
 import {
   DescriptionComponent,
@@ -6,7 +6,7 @@ import {
   LogoComponent,
 } from "../../components";
 
-export default function LandingPage(): JSX.Element {
+export default function LandingPage({ navigation }: any): JSX.Element {
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -21,6 +21,10 @@ export default function LandingPage(): JSX.Element {
           <GoogleLoginButton />
         </View>
       </View>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate("imbox")}
+      />
     </SafeAreaView>
   );
 }

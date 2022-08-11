@@ -1591,6 +1591,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@nx-js/observer-util@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@nx-js/observer-util/-/observer-util-4.2.2.tgz#faea1bc61936653486d1b5dec7485220991e628d"
+  integrity sha512-9OayX1xkdGjdnsDiO2YdaYJ6aMyCF7/NY4QWVgIgjSAZJ4OX2fD766Ts79hEzBscenQy2DCaSoY8VkguIMB1ZA==
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.7.tgz#58f8217ba70069cc6a73f5d7e05e85b458c150e2"
@@ -1836,6 +1841,13 @@
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@react-oauth/google/-/google-0.2.6.tgz#42f7a18c62d677c77ee8e1fc2eec2ccbe50be997"
   integrity sha512-Az6w/EL3QHSvWVbfX2WbUB15PGqM0hm86bpAoyvjw2nhDdPp9IOjpFg5HfSGJQJBydjbCFnZjI8PJskTzLOhew==
+
+"@risingstack/react-easy-state@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@risingstack/react-easy-state/-/react-easy-state-6.3.0.tgz#3590031f7382c5c6c7866790ba7a72e557a12407"
+  integrity sha512-AGLrzvwloZL7dgagwRkxJaq7bcDsOGdHrCpHZIlMIxcFLdFr5IpD2/kcmTlC34H682pvfIl1lzNxBw72la10aA==
+  dependencies:
+    "@nx-js/observer-util" "^4.2.2"
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
