@@ -1,9 +1,4 @@
-interface OAuthInterface {
-  getClientID(): string | undefined;
-  getClientSecret(): string | undefined;
-}
-
-export class GoogleOAuth implements OAuthInterface {
+abstract class OAuth {
   private drfClientId = process.env.REACT_APP_DRF_CLIENT_ID;
   private drfClientSecret = process.env.REACT_APP_DRF_CLIENT_SECRET;
 
@@ -21,5 +16,7 @@ export class GoogleOAuth implements OAuthInterface {
     return expiryDate;
   }
 }
+
+export class GoogleOAuth extends OAuth {}
 
 export const google = new GoogleOAuth();

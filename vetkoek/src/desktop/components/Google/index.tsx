@@ -2,8 +2,8 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { View, TouchableOpacity, Text } from "react-native";
-import { baseURL } from "../../libs";
-import { google } from "../../libs/oauth";
+import { baseURL } from "../../../libs";
+import { google } from "../../../libs/oauth";
 import { styles } from "./styles";
 
 function GoogleLogin(): JSX.Element {

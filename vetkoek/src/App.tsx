@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Router from "./router";
+import Router from "./desktop/router";
 
 const googleClientId: string =
   "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";
@@ -9,7 +9,7 @@ const linking = {
   prefixes: ["http://localhost:8008", "https://mail.kelodraken.com"],
   config: {
     screens: {
-      LandingScreen: "",
+      LandingScreen: "app/",
       HomeScreen: "mail/u/0/",
     },
   },
