@@ -4,4 +4,4 @@ import Logo from "./Logo";
 
 export const DescriptionComponent = Description;
 export const LogoComponent = Logo;
-export const GoogleLoginButton = GoogleLogin
+export const GoogleLoginButton = GoogleLogin;

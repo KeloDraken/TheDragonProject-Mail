@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Router from "./desktop/router";
+import Router from "./router";
 
 const googleClientId: string =
   "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";

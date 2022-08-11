@@ -2,8 +2,8 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { View, TouchableOpacity, Text } from "react-native";
-import { baseURL } from "../../../libs";
-import { google } from "../../../libs/oauth";
+import { baseURL } from "../../libs";
+import { google } from "../../libs/oauth";
 import { styles } from "./styles";
 
 function GoogleLogin(): JSX.Element {
@@ -45,7 +45,9 @@ function GoogleLogin(): JSX.Element {
       <TouchableOpacity style={styles.button} onPress={() => login()}>
         <Text style={styles.buttonText}>Begin 21 day free trial *</Text>
       </TouchableOpacity>
-      <Text allowFontScaling={false} style={styles.footnote}>* no credit card required</Text>
+      <Text allowFontScaling={false} style={styles.footnote}>
+        * no credit card required
+      </Text>
     </View>
   );
 }

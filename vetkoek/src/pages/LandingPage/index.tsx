@@ -8,7 +8,7 @@ import {
 
 export default function LandingPage(): JSX.Element {
   const d = new Date();
-let year = d.getFullYear();
+  let year = d.getFullYear();
   return (
     <SafeAreaView>
       <View style={styles.bar} />
@@ -20,7 +20,9 @@ let year = d.getFullYear();
         </View>
       </View>
       <View style={styles.bar}>
-        <Text allowFontScaling={false} style={styles.copyright}>{'\u00A9'} {year} Samkelo Rocks (Pty) Ltd.</Text>
+        <Text allowFontScaling={false} style={styles.copyright}>
+          {"\u00A9"} {year} Samkelo Rocks (Pty) Ltd.
+        </Text>
       </View>
     </SafeAreaView>
   );

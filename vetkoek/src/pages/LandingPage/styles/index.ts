@@ -20,11 +20,11 @@ export const styles = StyleSheet.create({
   hero: {
     marginHorizontal: wp("20"),
   },
-  copyright:{
+  copyright: {
     marginTop: hp("5"),
     marginLeft: wp("5"),
     color: "#7f7f7f",
     fontFamily: "Lora",
-    fontSize: wp("1")
+    fontSize: wp("1"),
   },
 });
