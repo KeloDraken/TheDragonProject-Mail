@@ -5,8 +5,7 @@ import { SafeAreaView, Text, View } from "react-native";
 import { baseURL } from "../../libs";
 import { google } from "../../libs/oauth";
 import { styles } from "./styles";
-import Logo from "../../components/Logo";
-import Description from "../../components/Description";
+import { DescriptionComponent, LogoComponent } from "../../components";
 
 export default function LandingPage() {
   const [, setCookie] = useCookies();
@@ -41,11 +40,13 @@ export default function LandingPage() {
     <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.columnLeft}>
-          <Logo />
-          <Text allowFontScaling={false} style={styles.mailEmoji}>@</Text>
+          <LogoComponent />
+          <Text allowFontScaling={false} style={styles.mailEmoji}>
+            @
+          </Text>
         </View>
         <View style={styles.columnRight}>
-          <Description />
+          <DescriptionComponent />
           <GoogleLogin
             onSuccess={(credentialResponse) => {
               handleLogin(credentialResponse);
