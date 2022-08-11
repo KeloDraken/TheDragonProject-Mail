@@ -1,9 +1,10 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { baseURL } from "../../libs";
 import { google } from "../../libs/oauth";
+import { styles } from "./styles";
 
 function GoogleLogin(): JSX.Element {
   const [, setCookie] = useCookies();
@@ -39,9 +40,11 @@ function GoogleLogin(): JSX.Element {
   }
 
   return (
-    <TouchableOpacity onPress={() => login()}>
-      Sign in with Google 🚀{" "}
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.button} onPress={() => login()}>
+        <Text style={styles.buttonText}>Continue with Google</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 

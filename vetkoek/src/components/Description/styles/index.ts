@@ -7,7 +7,7 @@ import {
 
 export const styles = StyleSheet.create({
     container: {
-        marginTop: hp("15"),
+        marginTop: hp("10"),
     },
     description: {
         fontSize: wp("3"),
