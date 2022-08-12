@@ -1,7 +1,6 @@
 from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 
 from rest_framework_jwt.settings import api_settings
@@ -47,10 +46,6 @@ class CreateUserAPIView(CreateAPIView):
             "message": "Successfully created your account",
         }
         return Response(data=data, status=status.HTTP_201_CREATED)
-
-        # data = {"status_code": 400, "message": serialiser.errors}
-        # print(serialiser.errors)
-        # return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
 
 
 user_registration = CreateUserAPIView.as_view()
