@@ -7,10 +7,8 @@ import LoggedOutStack from "./LoggedOut";
 export default view(function Router(): JSX.Element {
   const [cookies] = useCookies(["csrftoken"]);
 
-  console.log(cookies.csrftoken);
-
   const counter = store({
-    loggedIn: false,
+    loggedIn: cookies.csrftoken !== null && cookies.csrftoken !== undefined,
   });
 
   function Stack(): JSX.Element {
