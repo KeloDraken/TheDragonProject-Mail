@@ -6,7 +6,7 @@ const googleClientId: string =
   "991569752579-gig8rttagf7jk8ihfdgst1p53kme3ah9.apps.googleusercontent.com";
 
 const linking = {
-  prefixes: ["http://localhost:8008", "https://mail.kelodraken.com"],
+  prefixes: ["http://localhost:8080", "https://mail.kelodraken.com"],
 };
 
 function App(): JSX.Element {

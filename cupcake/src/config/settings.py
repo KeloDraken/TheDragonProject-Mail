@@ -15,6 +15,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "localhost:8080",
 ]
 
 INSTALLED_APPS = [
@@ -150,3 +151,5 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = "jwt-auth"
+
+LOGIN_REDIRECT_URL = "http://localhost:8080/"
