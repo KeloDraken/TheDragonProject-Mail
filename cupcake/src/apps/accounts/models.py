@@ -56,11 +56,15 @@ class User(AbstractUser):
     bio: str = models.TextField(null=True, blank=True, max_length=300)
 
 
+    def __str__(self) -> str:
+        return self.email
+
+
 def asign_object_id_on_profile_created(sender, **kwargs):
     if kwargs["created"]:
         user: User = kwargs["instance"]
         user.object_id = object_id_generator(30, User)
-        user.email = user.username
+        user.username = user.email
         user.save()
 
 

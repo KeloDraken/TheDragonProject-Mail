@@ -25,8 +25,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third party apps
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "corsheaders",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
     "rest_framework",
+    "rest_framework.authtoken",
     "rest_framework_jwt",
     "rest_framework_jwt.blacklist",
     # KeloDraken apps
@@ -109,6 +116,17 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 AUTH_USER_MODEL = "accounts.User"
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+SITE_ID = 1
 
 JWT_AUTH = {
     "JWT_VERIFY": True,
@@ -129,3 +147,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
     ],
 }
+
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = "jwt-auth"
