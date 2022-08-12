@@ -7,12 +7,6 @@ const googleClientId: string =
 
 const linking = {
   prefixes: ["http://localhost:8008", "https://mail.kelodraken.com"],
-  config: {
-    screens: {
-      LandingScreen: "app/",
-      HomeScreen: "mail/u/0/",
-    },
-  },
 };
 
 function App(): JSX.Element {
