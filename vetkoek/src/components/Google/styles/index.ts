@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     paddingVertical: hp("2.7"),
     paddingHorizontal: wp("2.5"),
-    backgroundColor: "#000000",
+    backgroundColor: "#060607",
     borderRadius: wp("3"),
     shadowColor: "#3f3f3f",
     shadowOffset: { width: wp("1"), height: wp("1") },

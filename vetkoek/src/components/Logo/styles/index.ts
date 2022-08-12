@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     color: "#F1F1F1",
   },
   logoDark: {
-    color: "#000000",
+    color: "#060607",
   },
   mail: {
     fontFamily: "Roboto",

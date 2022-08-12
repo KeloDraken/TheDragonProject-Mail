@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   },
   description: {
     display: "flex",
+    color: "#060607",
     flexDirection: "column",
     alignSelf: "center",
     fontSize: wp("2.6"),
@@ -19,6 +20,7 @@ export const styles = StyleSheet.create({
   },
   info: {
     display: "flex",
+    color: "#060607",
     flexDirection: "column",
     textAlign: "center",
     marginBottom: hp("3.5"),

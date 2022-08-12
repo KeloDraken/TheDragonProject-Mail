@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   bar: {
     width: wp("100"),
     height: hp("10"),
-    backgroundColor: "#000000",
+    backgroundColor: "#060607",
   },
   hero: {
     marginHorizontal: wp("20"),
