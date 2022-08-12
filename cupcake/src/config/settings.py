@@ -152,4 +152,7 @@ REST_FRAMEWORK = {
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = "jwt-auth"
 
-LOGIN_REDIRECT_URL = "http://localhost:8080/"
+if DEBUG:
+    LOGIN_REDIRECT_URL = "http://localhost:8080/"
+else:
+    LOGIN_REDIRECT_URL = "https://mail.kelodraken.com/"
