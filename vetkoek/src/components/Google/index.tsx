@@ -10,10 +10,10 @@ function GoogleLogin(): JSX.Element {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={() => login()}>
-        <Text style={styles.buttonText}>Begin 21 day free trial *</Text>
+        <Text style={styles.buttonText}>Continue with Google *</Text>
       </TouchableOpacity>
       <Text allowFontScaling={false} style={styles.footnote}>
-        * no credit card required
+        * 7-day free trial, no credit card required
       </Text>
     </View>
   );
