@@ -2,6 +2,7 @@
 Project settings
 """
 
+import datetime
 from pathlib import Path
 from decouple import config
 
@@ -24,8 +25,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third party apps
-    "rest_framework",
     "corsheaders",
+    "rest_framework",
+    "rest_framework_jwt",
+    "rest_framework_jwt.blacklist",
     # KeloDraken apps
     "apps.accounts",
 ]
@@ -107,3 +110,22 @@ CORS_ALLOWED_ORIGINS = [
 
 AUTH_USER_MODEL = "accounts.User"
 
+JWT_AUTH = {
+    "JWT_VERIFY": True,
+    "JWT_VERIFY_EXPIRATION": True,
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(seconds=604800),
+    "JWT_ALLOW_REFRESH": True,
+    "JWT_REFRESH_EXPIRATION_DELTA": datetime.timedelta(days=100000),
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+}
