@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
     fontSize: wp("3"),
     fontWeight: "600",
   },
+  logoLight: {
+    color: "#F1F1F1",
+  },
+  logoDark: {
+    color: "#000000",
+  },
   mail: {
     fontFamily: "Roboto",
     fontSize: wp("2.8"),

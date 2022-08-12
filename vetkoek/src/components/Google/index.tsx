@@ -3,7 +3,8 @@ import { styles } from "./styles";
 
 function GoogleLogin(): JSX.Element {
   function login() {
-    window.location.replace("http://localhost:8000/auth/google/login/");
+    // window.location.replace("http://localhost:8000/auth/google/login/");
+    console.log("Logging you in")
   }
 
   return (
@@ -16,6 +17,6 @@ function GoogleLogin(): JSX.Element {
       </Text>
     </View>
   );
-}
+} 
 
 export default GoogleLogin;

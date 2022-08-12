@@ -9,7 +9,7 @@ export default function LoggedInStack() {
       <Stack.Screen
         name="imbox"
         component={HomeScreen}
-        options={{ title: "KOMN" }}
+        options={{ title: "KeloDraken Mail - Imbox" }}
       />
     </Stack.Navigator>
   );
