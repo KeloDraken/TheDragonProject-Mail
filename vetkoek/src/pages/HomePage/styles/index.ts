@@ -4,7 +4,7 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 export const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: "#060607",
+    backgroundColor: "#f1f1f1",
     height: hp("100"),
   },
 });

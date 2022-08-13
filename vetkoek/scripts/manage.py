@@ -16,27 +16,37 @@ class Manager:
         if self._has_special_char(page_name):
             raise ValueError("Name cannot contain special characters.")
 
-    def _create_directories(self, new_app_directory: Path):
+    def _create_stylesheets(self, new_app_directory: Path) -> None:
+        with open(f"{new_app_directory}/styles/index.ts", "w") as init:
+            code: str = """import { StyleSheet } from \"react-native\";
+
+export const styles = StyleSheet.create({});
+"""
+            init.write(code)
+
+    def _create_tsx_files(self, page_name, new_app_directory: Path) -> None:
+        with open(f"{new_app_directory}/index.tsx", "w") as init:
+            code: str = """function tempName(): JSX.Element {
+    return <h1>tempName</h1>;
+};
+export default tempName;
+"""
+            init.write(code.replace("tempName", page_name))
+
+    def _create_directories(self, new_app_directory: Path) -> None:
         if os.path.exists(new_app_directory):
             raise ValueError("Directory already exists.")
 
         os.makedirs(new_app_directory)
         os.makedirs(new_app_directory / "styles")
 
-    def _create_files(self, page_name, parent_directory: str):
+    def _create_files(self, page_name: str, parent_directory: str) -> None:
         app_directory = self.base_dir / "src" / parent_directory
         new_app_directory = Path(str(app_directory) + os.sep + page_name)
 
         self._create_directories(new_app_directory)
-
-        with open(f"{new_app_directory}/index.tsx", "w") as init:
-            code: str = """function tempName(): JSX.Element {
-    return <h1>tempName</h1>;
-};
-
-export default tempName;
-"""
-            init.write(code.replace("tempName", page_name))
+        self._create_tsx_files(page_name, new_app_directory)
+        self._create_stylesheets(new_app_directory)
 
     def create_page(self, page_name: str) -> None:
         self._validate_name(page_name)

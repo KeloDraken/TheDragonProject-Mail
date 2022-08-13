@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { styles } from "./styles";
 
-function Description(): JSX.Element {
+function DescriptionComponent(): JSX.Element {
   return (
     <View style={styles.container}>
       <Text allowFontScaling={false} style={styles.description}>
@@ -16,4 +16,4 @@ function Description(): JSX.Element {
   );
 }
 
-export default Description;
+export default DescriptionComponent;

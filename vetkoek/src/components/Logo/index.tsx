@@ -6,7 +6,7 @@ interface LogoProps {
   light?: boolean;
 }
 
-function Logo({ light }: LogoProps): JSX.Element {
+function LogoComponent({ light }: LogoProps): JSX.Element {
   let logoColour = null;
   if (light) logoColour = styles.logoLight;
   else logoColour = styles.logoDark;
@@ -23,4 +23,4 @@ function Logo({ light }: LogoProps): JSX.Element {
   );
 }
 
-export default Logo;
+export default LogoComponent;

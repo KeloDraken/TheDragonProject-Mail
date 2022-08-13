@@ -1,13 +1,7 @@
-import Description from "./Description";
-import Feed from "./Feed";
+import DescriptionComponent from "./Description";
 import GoogleLogin from "./Google";
-import Logo from "./Logo";
-import Search from "./Search";
-import Sidebar from "./Sidebar";
+import LogoComponent from "./Logo";
 
-export const DescriptionComponent = Description;
-export const LogoComponent = Logo;
+export const Description = DescriptionComponent;
+export const Logo = LogoComponent;
 export const GoogleLoginButton = GoogleLogin;
-export const SidebarComponent = Sidebar;
-export const SearchComponent = Search;
-export const FeedComponent = Feed;

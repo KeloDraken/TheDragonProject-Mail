@@ -1,10 +1,6 @@
 import { SafeAreaView, View, Text } from "react-native";
 import { styles } from "./styles";
-import {
-  DescriptionComponent,
-  GoogleLoginButton,
-  LogoComponent,
-} from "../../components";
+import { Description, GoogleLoginButton, Logo } from "../../components";
 
 export default function LandingPage(): JSX.Element {
   const d = new Date();
@@ -13,9 +9,9 @@ export default function LandingPage(): JSX.Element {
     <SafeAreaView>
       <View style={styles.bar} />
       <View style={styles.container}>
-        <LogoComponent />
+        <Logo />
         <View style={styles.hero}>
-          <DescriptionComponent />
+          <Description />
           <GoogleLoginButton />
         </View>
       </View>
