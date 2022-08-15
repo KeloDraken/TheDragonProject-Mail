@@ -1,0 +1,82 @@
+{% extends "socialaccount/base.html" %} {% load i18n %} {% block head_title %}{%
+trans "Sign In" %}{% endblock %} {% block content %}
+<style>
+  body{
+    margin: 7% 20%;
+  }
+  .content {
+    flex: 1;
+    align-items: center;
+  }
+  .button {
+    cursor: pointer;
+    box-shadow: #3f3f3f 10px 10px 25px;
+    flex: 1;
+    flex-direction: column;
+    align-self: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    background-color: #060607;
+    border-radius: 3em;
+    font-family: "Lora";
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: auto;
+    color: #ffffff;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .logo {
+    font-family: "Lobster";
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .mail {
+    font-family: "Roboto";
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 2px;
+    margin-top: 0.7em;
+  } 
+</style>
+
+<div class="logo-container">
+  <h1 class="logo">kelodraken</h1>
+  <h1 class="mail">Mail</h1>
+</div>
+
+<div class="content">
+  {% if process == "connect" %}
+  <h1>
+    {% blocktrans with provider.name as provider %}Connect {{ provider }}{% endblocktrans %}
+  </h1>
+
+  <p>
+    {% blocktrans with provider.name as provider %}You are about to connect a new third party account from {{ provider }}.{% endblocktrans %}
+  </p>
+  {% else %}
+  <h1>
+   Sign in
+  </h1>
+
+  <h3>
+    {% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}
+  </h3>
+  {% endif %}
+
+  <p>
+   By clicking Continue, you signal that you understand that to create your account, Google will share your name, email address, and
+      profile picture with KeloDraken.
+    </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button class="button" type="submit">{% trans "Continue" %}</button>
+  </form>
+</div>
+{% endblock %}
