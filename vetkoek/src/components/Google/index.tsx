@@ -3,7 +3,7 @@ import { styles } from "./styles";
 
 function GoogleLogin(): JSX.Element {
   function login() {
-    window.location.replace("http://localhost:8000/auth/google/login/");
+    window.location.href = "http://localhost:8000/auth/google/login/";
   }
 
   return (
