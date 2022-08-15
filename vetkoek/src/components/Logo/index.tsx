@@ -13,10 +13,10 @@ function LogoComponent({ light }: LogoProps): JSX.Element {
 
   return (
     <View style={styles.container}>
-      <Text allowFontScaling={false} style={[styles.logo, logoColour]}>
+      <Text selectable={false} allowFontScaling={false} style={[styles.logo, logoColour]}>
         kelodraken
       </Text>
-      <Text allowFontScaling={false} style={[styles.mail, logoColour]}>
+      <Text selectable={false} allowFontScaling={false} style={[styles.mail, logoColour]}>
         Mail
       </Text>
     </View>

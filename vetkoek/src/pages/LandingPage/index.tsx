@@ -16,7 +16,11 @@ export default function LandingPage(): JSX.Element {
         </View>
       </View>
       <View style={styles.bar}>
-        <Text allowFontScaling={false} style={styles.copyright}>
+        <Text
+          selectable={false}
+          allowFontScaling={false}
+          style={styles.copyright}
+        >
           {"\u00A9"} {year} Samkelo Rocks (Pty) Ltd.
         </Text>
       </View>
