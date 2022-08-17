@@ -43,9 +43,9 @@ class User(AbstractUser):
         help_text=_(
             "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
         ),
-        validators=[
-            UnicodeEmailValidator(),
-        ],
+        # validators=[
+        #     UnicodeEmailValidator(),
+        # ],
         error_messages={
             "unique": _("This email is not available, please try another one."),
         },
@@ -54,17 +54,18 @@ class User(AbstractUser):
     profile_pic: str = models.CharField(max_length=3000, null=True, blank=True)
     cover_pic: str = models.CharField(max_length=3000, null=True, blank=True)
     bio: str = models.TextField(null=True, blank=True, max_length=300)
-
+    app_password: str = models.CharField(max_length=3000, null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.email
+        return self.username
 
 
 def asign_object_id_on_profile_created(sender, **kwargs):
     if kwargs["created"]:
         user: User = kwargs["instance"]
         user.object_id = object_id_generator(30, User)
-        user.username = user.email
+        if user.email:
+            user.username = user.email
         user.save()
 
 

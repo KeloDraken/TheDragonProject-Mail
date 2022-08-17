@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "rest_framework_jwt.blacklist",
     # KeloDraken apps
     "apps.accounts",
+    "apps.imbox",
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,8 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+SOCIALACCOUNT_STORE_TOKENS = True
 
 SITE_ID = 1
 

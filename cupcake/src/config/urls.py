@@ -10,6 +10,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("auth/", include("allauth.urls")),
     path("accounts/", include("apps.accounts.urls", namespace="accounts")),
+    path("imbox/", include("apps.imbox.urls", namespace="imbox")),
 ]
 
 admin.site.site_header = "KeloDraken Mail Admin"

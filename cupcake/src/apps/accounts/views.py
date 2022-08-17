@@ -1,18 +1,20 @@
-from tempfile import template
 import urllib.parse
 
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
-from apps.accounts.models import User
-from apps.accounts.serialisers import CreateUserSerialiser
+
 from dj_rest_auth.registration.views import SocialLoginView
 from django.shortcuts import redirect
 from django.urls import reverse
+
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework_jwt.settings import api_settings
+
+from apps.accounts.models import User
+from apps.accounts.serialisers import CreateUserSerialiser
 
 
 class CreateUserAPIView(CreateAPIView):
@@ -56,14 +58,13 @@ class CreateUserAPIView(CreateAPIView):
 
 def github_callback(request):
     params = urllib.parse.urlencode(request.GET)
+    print(request.GET)
     return redirect(f"http://localhost:8080/auth/google?{params}")
-
 
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
     callback_url = "http://127.0.0.1:8000/auth/google/callback"
     client_class = OAuth2Client
-
 
     def get_serializer(self, *args, **kwargs):
         serializer_class = self.get_serializer_class()
