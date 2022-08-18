@@ -5,6 +5,9 @@ import {
 } from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
+  container: {
+    marginBottom: heightPercentageToDP("4"),
+  },
   formInput: {
     color: "#000000",
     fontFamily: "Lora",
@@ -24,7 +27,6 @@ export const styles = StyleSheet.create({
     paddingVertical: heightPercentageToDP("2"),
     borderWidth: widthPercentageToDP("0.3"),
     borderRadius: widthPercentageToDP("0.3"),
-    marginBottom: heightPercentageToDP("5"),
   },
   buttonText: {
     color: "#ffffff",
@@ -32,4 +34,8 @@ export const styles = StyleSheet.create({
     fontSize: widthPercentageToDP("2"),
     fontWeight: "600",
   },
+  footnote: {
+    fontSize: widthPercentageToDP("1"),
+    color: "#757575"
+  }
 });
