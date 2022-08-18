@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { styles } from "./styles";
+import { Text } from "../../components";
 
 function _Logo(): JSX.Element {
   return (

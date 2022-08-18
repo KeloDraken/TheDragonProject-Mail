@@ -7,7 +7,6 @@ import {
 export const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    margin: widthPercentageToDP("2")
   },
   company: {
     fontFamily: "Lobster",

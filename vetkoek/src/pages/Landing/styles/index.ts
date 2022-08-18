@@ -6,8 +6,19 @@ import {
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: heightPercentageToDP("100"),
-    width: widthPercentageToDP("100"),
+    margin: widthPercentageToDP("2"),
+    height: heightPercentageToDP("95"),
+    width: widthPercentageToDP("95"),
+  },
+  navbar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  text: {
+    fontWeight: "900",
+  },
+  description: {
+    marginVertical: heightPercentageToDP("5"),
+    marginRight: widthPercentageToDP("3")
   },
 });

@@ -7,4 +7,13 @@ export const styles = StyleSheet.create({
     fontSize: widthPercentageToDP("1.5"),
     fontWeight: "600",
   },
+  textLarge: {
+    fontSize: widthPercentageToDP("5")
+  },
+  textMedium: {
+    fontSize: widthPercentageToDP("3")
+  },
+  textSmall: {
+    fontSize: widthPercentageToDP("2")
+  }
 });
