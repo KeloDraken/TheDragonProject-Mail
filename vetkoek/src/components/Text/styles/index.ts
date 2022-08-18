@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     fontFamily: "Lora",
     fontSize: widthPercentageToDP("1.5"),
     fontWeight: "600",
+    color: "#000000",
   },
   textLarge: {
     fontSize: widthPercentageToDP("5")

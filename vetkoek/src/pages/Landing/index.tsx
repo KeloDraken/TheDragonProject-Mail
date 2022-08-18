@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Logo, Text } from "../../components";
+import { AuthForm, Logo, Text } from "../../components";
 import { styles } from "./styles";
 
 function Landing(): JSX.Element {
@@ -14,6 +14,9 @@ function Landing(): JSX.Element {
           Our fresh approach transforms email into something you want to use,
           not something you're forced to deal with.
         </Text>
+      </View>
+      <View>
+        <AuthForm />
       </View>
     </View>
   );
