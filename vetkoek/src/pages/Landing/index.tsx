@@ -1,10 +1,11 @@
 import { View } from "react-native";
-import { Text } from "../../components";
+import { Logo, Text } from "../../components";
+import { styles } from "./styles";
 
 function Landing(): JSX.Element {
   return (
-    <View>
-      <Text>Landing page</Text>
+    <View style={styles.container}>
+      <Logo />
     </View>
   );
 }
