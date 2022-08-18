@@ -4,7 +4,6 @@ Project settings
 
 import datetime
 from pathlib import Path
-from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,13 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third party apps
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
     "corsheaders",
-    "dj_rest_auth",
-    "dj_rest_auth.registration",
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_jwt",
@@ -123,15 +116,6 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-
-SOCIALACCOUNT_STORE_TOKENS = True
-
-SITE_ID = 1
-
 JWT_AUTH = {
     "JWT_VERIFY": True,
     "JWT_VERIFY_EXPIRATION": True,
@@ -152,8 +136,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = "jwt-auth"
 
 if DEBUG:
     LOGIN_REDIRECT_URL = "http://localhost:8080/"
