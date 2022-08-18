@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { LandingPage } from "./pages";
 
 function App(): JSX.Element {
-  return <h1>Hey</h1>;
+  return <LandingPage />;
 }
 
 export default App;
