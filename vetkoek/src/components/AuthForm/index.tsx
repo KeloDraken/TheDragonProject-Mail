@@ -1,4 +1,4 @@
-import { TextInput, TouchableOpacity, View, Text, Button } from "react-native";
+import { TextInput, TouchableOpacity, View, Text } from "react-native";
 import { styles } from "./styles";
 
 function _AuthForm(): JSX.Element {

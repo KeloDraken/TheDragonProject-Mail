@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { AuthForm, Logo, Text } from "../../components";
+import { AuthForm, Logo, Marquee, Text } from "../../components";
 import { styles } from "./styles";
 
 function Landing(): JSX.Element {
@@ -18,6 +18,7 @@ function Landing(): JSX.Element {
       <View>
         <AuthForm />
       </View>
+      <Marquee />
     </View>
   );
 }

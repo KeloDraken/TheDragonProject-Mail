@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     paddingVertical: heightPercentageToDP("2"),
     borderWidth: widthPercentageToDP("0.3"),
     borderRadius: widthPercentageToDP("0.3"),
+    marginBottom: heightPercentageToDP("5"),
   },
   buttonText: {
     color: "#ffffff",
