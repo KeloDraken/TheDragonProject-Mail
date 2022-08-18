@@ -1,5 +1,5 @@
-import { View } from "react-native";
-import { AuthForm, Logo, Marquee, Text } from "../../components";
+import { View, TouchableOpacity } from "react-native";
+import { AuthForm, Logo, Marquee, Navbar, Text } from "../../components";
 import { styles } from "./styles";
 
 function Landing(): JSX.Element {
@@ -7,6 +7,7 @@ function Landing(): JSX.Element {
     <View style={styles.container}>
       <View style={styles.navbar}>
         <Logo />
+        <Navbar />
       </View>
       <View style={styles.description}>
         <Text size="large">Email done right</Text>
