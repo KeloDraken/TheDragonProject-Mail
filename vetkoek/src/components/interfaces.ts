@@ -5,3 +5,7 @@ export interface TextInterface {
   children: any;
   size?: "large" | "medium" | "small";
 }
+
+export interface AuthenticationInterface {
+  isLogin?: boolean;
+}
