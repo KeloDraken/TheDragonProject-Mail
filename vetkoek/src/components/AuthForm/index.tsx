@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import { TextInput, TouchableOpacity, View } from "react-native";
 import { Text } from "../../components";
 import { Authentication } from "../../lib/auth";
@@ -7,8 +8,21 @@ import { styles } from "./styles";
 function _AuthForm(): JSX.Element {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [, setCookie] = useCookies(["UIDT"]);
 
   const auth: Authentication = new Authentication(email, password);
+
+  const setUserToken = (token: string): void => {
+    setCookie("UIDT", token, {
+      path: "/",
+      maxAge: 2628000,
+    });
+    window.location.reload();
+  };
+
+  const handleAuth = (): void => {
+   auth.userRegistration(setUserToken);
+  };
 
   return (
     <View style={styles.container}>
@@ -36,7 +50,7 @@ function _AuthForm(): JSX.Element {
         returnKeyType="send"
       />
       <TouchableOpacity
-        onPress={() => auth.userRegistration()}
+        onPress={() => handleAuth()}
         style={styles.button}
       >
         <Text style={styles.buttonText}>Try free for 14 days *</Text>

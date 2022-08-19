@@ -1837,11 +1837,6 @@
   dependencies:
     nanoid "^3.1.23"
 
-"@react-oauth/google@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@react-oauth/google/-/google-0.2.6.tgz#42f7a18c62d677c77ee8e1fc2eec2ccbe50be997"
-  integrity sha512-Az6w/EL3QHSvWVbfX2WbUB15PGqM0hm86bpAoyvjw2nhDdPp9IOjpFg5HfSGJQJBydjbCFnZjI8PJskTzLOhew==
-
 "@risingstack/react-easy-state@^6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@risingstack/react-easy-state/-/react-easy-state-6.3.0.tgz#3590031f7382c5c6c7866790ba7a72e557a12407"
@@ -2280,11 +2275,6 @@
     jest-matcher-utils "^27.0.0"
     pretty-format "^27.0.0"
 
-"@types/js-cookie@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.2.tgz#451eaeece64c6bdac8b2dde0caab23b085899e0d"
-  integrity sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==
-
 "@types/json-schema@*", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -2305,10 +2295,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.6.5.tgz#06caea822caf9e59d5034b695186ee74154d2802"
   integrity sha512-Xjt5ZGUa5WusGZJ4WJPbOT8QOqp6nDynVFRKcUt32bOgvXEoc6o085WNkYTMO7ifAj2isEfQQ2cseE+wT6jsRw==
 
-"@types/node@^16.7.13":
-  version "16.11.47"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.47.tgz#efa9e3e0f72e7aa6a138055dace7437a83d9f91c"
-  integrity sha512-fpP+jk2zJ4VW66+wAMFoBJlx1bxmBKx4DUFf68UHgdGCOuyUTDlLWqsaNPJh7xhNDykyJ9eIzAygilP/4WoN8g==
+"@types/node@^18.7.6":
+  version "18.7.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.6.tgz#31743bc5772b6ac223845e18c3fc26f042713c83"
+  integrity sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -6872,11 +6862,6 @@ joi@^17.2.1:
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
 
-js-cookie@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
-  integrity sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==
-
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -8208,6 +8193,11 @@ pascalcase@^0.1.1:
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha512-XHXfu/yOQRy9vYOtUDVMN60OEJjW013GoObG1o+xwQTpB9eYJX/BjXMsdW13ZDPruFhYYn0AG22w0xgQMwl3Nw==
 
+password-validator@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/password-validator/-/password-validator-5.3.0.tgz#472b89997c71c185eb22b7917b225726b4d64577"
+  integrity sha512-Q+bSEM5pjokZqzWGoQaoylkeWeH4+9uMYlVImiPD0EOJClQ2RPBhrJ5h0OjhMKtwOmu5rRcLaTZo5Gk9RBl0ig==
+
 path-exists@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-3.0.0.tgz#ce0ebeaa5f78cb18925ea7d810d7b59b010fd515"
@@ -8946,7 +8936,7 @@ prompts@^2.0.1, prompts@^2.4.0, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -9138,6 +9128,13 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-native-awesome-alerts@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-awesome-alerts/-/react-native-awesome-alerts-2.0.0.tgz#beb981ed50671c51fcd227c5bb6c58d4d493b681"
+  integrity sha512-ZRBNnDfpE+aQCtXXnQcfGLqwzZ53Q45CNkQI4hOiF8/9JPuCyMUQL2aqtiypnLpCIX+CB28Jcx1KVJ6/reaZsg==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-native-codegen@^0.69.1:
   version "0.69.1"

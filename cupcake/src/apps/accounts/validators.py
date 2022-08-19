@@ -20,7 +20,7 @@ class UnicodeEmailValidator:
             check_dns=True,
             dns_timeout=10,
             check_smtp=True,
-            smtp_timeout=10,
+            smtp_timeout=20,
             smtp_helo_host="smtp.gmail.com",
             smtp_from_address="jmama021@student.wethinkcode.co.za",
             smtp_skip_tls=False,
