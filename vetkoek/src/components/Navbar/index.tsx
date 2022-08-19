@@ -1,4 +1,4 @@
-import {  View } from "react-native";
+import { View } from "react-native";
 import { Link } from "react-router-dom";
 import { Text } from "../";
 import { styles } from "./styles";
@@ -30,7 +30,11 @@ export default function _Navbar(props: NavbarProps) {
   return (
     <View style={styles.navbarLinkContainer}>
       <Text style={styles.navbarLink}>About</Text>
-      <Text style={styles.navbarLink}>Pricing</Text>
+
+      <Text style={styles.navbarLink}>
+        <Link to="/pricing">Pricing</Link>
+      </Text>
+
       {renderButton()}
     </View>
   );
