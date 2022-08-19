@@ -7,7 +7,7 @@ function Login(): JSX.Element {
     <View style={styles.container}>
       <View style={styles.navbar}>
         <Logo />
-        <Navbar />
+        <Navbar isLoginPage />
       </View>
       <View style={styles.description}>
         <Text size="large">Welcome back!!!</Text>

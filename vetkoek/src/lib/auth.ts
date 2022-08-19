@@ -22,20 +22,22 @@ export class Authentication {
 
   public handleAuthentication(): void {
     this.formValidationError();
-    if (this.hasEmail() && this.hasPassword()) this.sendRequest();
+    if (this.isLogin) {
+      if (this.hasEmail()) this.sendRequest();
+    } else {
+      if (this.hasEmail() && this.hasPassword()) this.sendRequest();
+    }
   }
 
   private formValidationError() {
     if (!this.hasEmail()) alert("Please enter your email address");
 
-    if (!this.isLogin) {
-      if (!this.hasPassword()) {
+    if (!this.hasPassword()) {
+      if (!this.isLogin) {
         alert(
           "Please make sure that your password is at least 8 characters long and has at least one uppercase, one lowercase, and one special character."
         );
       }
-    } else {
-      alert("Please enter your password.");
     }
   }
 

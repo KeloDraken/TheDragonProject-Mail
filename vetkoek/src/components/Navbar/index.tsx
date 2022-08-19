@@ -1,18 +1,37 @@
-import { TouchableOpacity, View } from "react-native";
+import {  View } from "react-native";
+import { Link } from "react-router-dom";
 import { Text } from "../";
 import { styles } from "./styles";
 
-export default function _Navbar({ navigation }: any) {
+interface NavbarProps {
+  isLoginPage?: boolean;
+}
+
+export default function _Navbar(props: NavbarProps) {
+  const renderButton = (): JSX.Element => {
+    if (props.isLoginPage) {
+      return (
+        <Link to="/">
+          <View style={styles.navbarButton}>
+            <Text style={styles.navbarButtonText}>Sign up</Text>
+          </View>
+        </Link>
+      );
+    }
+    return (
+      <Link to="/accounts/login">
+        <View style={styles.navbarButton}>
+          <Text style={styles.navbarButtonText}>Sign in</Text>
+        </View>
+      </Link>
+    );
+  };
+
   return (
     <View style={styles.navbarLinkContainer}>
       <Text style={styles.navbarLink}>About</Text>
       <Text style={styles.navbarLink}>Pricing</Text>
-      <TouchableOpacity
-        style={styles.navbarButton}
-        onPress={() => navigation.navigate("login")}
-      >
-        <Text style={styles.navbarButtonText}>Sign in</Text>
-      </TouchableOpacity>
+      {renderButton()}
     </View>
   );
 }
