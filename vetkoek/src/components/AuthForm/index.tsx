@@ -8,9 +8,8 @@ import { styles } from "./styles";
 function _AuthForm(): JSX.Element {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const [, setCookie] = useCookies(["UIDT"]);
-
-  const auth: Authentication = new Authentication(email, password);
 
   const setUserToken = (token: string): void => {
     setCookie("UIDT", token, {
@@ -20,8 +19,15 @@ function _AuthForm(): JSX.Element {
     window.location.reload();
   };
 
+  const auth: Authentication = new Authentication(
+    email,
+    password,
+    isLogin,
+    setUserToken
+  );
+
   const handleAuth = (): void => {
-   auth.userRegistration(setUserToken);
+    auth.handleAuthentication();
   };
 
   return (
@@ -49,10 +55,7 @@ function _AuthForm(): JSX.Element {
         onChangeText={setPassword}
         returnKeyType="send"
       />
-      <TouchableOpacity
-        onPress={() => handleAuth()}
-        style={styles.button}
-      >
+      <TouchableOpacity onPress={() => handleAuth()} style={styles.button}>
         <Text style={styles.buttonText}>Try free for 14 days *</Text>
       </TouchableOpacity>
       <Text style={styles.footnote}>* No credit card required</Text>
