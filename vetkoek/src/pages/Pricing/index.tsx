@@ -52,8 +52,17 @@ function Login(): JSX.Element {
         <View style={styles.description}>
           <Text size="medium">What if I have more questions?</Text>
           <Text size="small">
-            Send us an email at <Text size="small" style={{textDecorationStyle: "solid", textDecorationLine: "underline"}}>info@kelodraken.com</Text> and we'll help
-            you out.
+            Send us an email at{" "}
+            <Text
+              size="small"
+              style={{
+                textDecorationStyle: "solid",
+                textDecorationLine: "underline",
+              }}
+            >
+              info@kelodraken.com
+            </Text>{" "}
+            and we'll help you out.
           </Text>
         </View>
       </View>
