@@ -1,12 +1,22 @@
 import { StyleSheet } from "react-native";
-import { heightPercentageToDP, widthPercentageToDP } from "react-native-responsive-screen";
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
   navbarLinkContainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  navbar: {
+    flexDirection: "row",
+  },
+  accountLink: {
+    marginLeft: widthPercentageToDP("34")
   },
   navbarLink: {
-    marginLeft: widthPercentageToDP("1"),
+    marginLeft: widthPercentageToDP("2"),
     marginTop: heightPercentageToDP("1"),
   },
   navbarButton: {
