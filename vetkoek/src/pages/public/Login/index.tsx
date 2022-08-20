@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { AuthForm, Logo, Marquee, Navbar, Text } from "../../components";
+import { AuthForm, Logo, Marquee, Navbar, Text } from "../../../components";
 import { styles } from "./styles";
 
 function Login(): JSX.Element {
