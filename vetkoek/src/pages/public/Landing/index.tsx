@@ -1,26 +1,29 @@
 import { View } from "react-native";
-import { AuthForm, Logo, Marquee, Navbar, Text } from "../../../components";
+import { AuthForm, Marquee, Text } from "../../../components";
+import { Page } from "../../Page";
 import { styles } from "./styles";
 
-function Landing(): JSX.Element {
-  return (
-    <View style={styles.container}>
-      <View style={styles.navbar}>
-        <Logo />
-        <Navbar />
-      </View>
-      <View style={styles.description}>
-        <Text size="large">Email done right</Text>
-        <Text size="small">
-          Our fresh approach transforms email into something you want to use,
-          not something you're forced to deal with.
-        </Text>
-      </View>
+class _Landing extends Page {
+  public PageContent(): JSX.Element {
+    return (
       <View>
-        <AuthForm />
+        <View style={styles.description}>
+          <Text size="large">Email done right</Text>
+          <Text size="small">
+            Our fresh approach transforms email into something you want to use,
+            not something you're forced to deal with.
+          </Text>
+        </View>
+        <View>
+          <AuthForm />
+        </View>
+        <Marquee />
       </View>
-      <Marquee />
-    </View>
-  );
+    );
+  }
+}
+
+function Landing(): JSX.Element {
+  return new _Landing().render();
 }
 export default Landing;

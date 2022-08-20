@@ -1,23 +1,27 @@
 import { View } from "react-native";
-import { Logo, Navbar, Text } from "../../../components";
+import { Text } from "../../../components";
+import { Page } from "../../Page";
 import { styles } from "./styles";
 
-function Imbox(): JSX.Element {
-  return (
-    <View style={styles.container}>
-      <View style={styles.navbarContainer}>
-        <Logo />
-        <Navbar />
+class _ImboxPage extends Page {
+  public PageContent(): JSX.Element {
+    return (
+      <View>
+        <View style={styles.description}>
+          <Text size="medium">New for you</Text>
+          <Text>There's nothing for you</Text>
+        </View>
+        <View style={styles.description}>
+          <Text size="medium">Previously seen emails</Text>
+          <Text>There's nothing for you</Text>
+        </View>
       </View>
-      <View style={styles.description}>
-        <Text size="medium">New for you</Text>
-        <Text>There's nothing for you</Text>
-      </View>
-      <View style={styles.description}>
-        <Text size="medium">Previously seen emails</Text>
-        <Text>There's nothing for you</Text>
-      </View>
-    </View>
-  );
+    );
+  }
 }
-export default Imbox;
+
+function ImboxPage(): JSX.Element {
+  return new _ImboxPage().render();
+}
+
+export default ImboxPage;
