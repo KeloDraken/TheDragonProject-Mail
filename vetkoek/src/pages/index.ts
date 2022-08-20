@@ -1,6 +1,6 @@
-import Landing from "./Landing";
-import Login from "./Login";
-import Pricing from "./Pricing";
+import Landing from "./public/Landing";
+import Login from "./public/Login";
+import Pricing from "./public/Pricing";
 
 export const LandingPage = Landing;
 export const LoginPage = Login;

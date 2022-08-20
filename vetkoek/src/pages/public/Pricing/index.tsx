@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
-import { Logo, Marquee, Navbar, Text } from "../../components";
+import { Logo, Marquee, Navbar, Text } from "../../../components";
 import { styles } from "./styles";
 
 function Login(): JSX.Element {
