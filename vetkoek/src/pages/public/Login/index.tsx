@@ -1,8 +1,17 @@
+import { view } from "@risingstack/react-easy-state";
+import { useEffect } from "react";
 import { View } from "react-native";
 import { AuthForm, Logo, Marquee, Navbar, Text } from "../../../components";
+import { userAuth } from "../../../store";
 import { styles } from "./styles";
 
-function Login(): JSX.Element {
+const Login = view((): JSX.Element => {
+  useEffect((): void => {
+    if (userAuth.isLoggedIn) {
+      window.location.replace("/");
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
@@ -22,5 +31,5 @@ function Login(): JSX.Element {
       <Marquee />
     </View>
   );
-}
+});
 export default Login;

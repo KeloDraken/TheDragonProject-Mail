@@ -2,6 +2,10 @@ import axios from "axios";
 import PasswordValidator from "password-validator";
 import { commonPasswords } from "./common-passwords";
 
+export function redirectIfAuthenticated(href: string): void {
+  window.location.href = href;
+}
+
 export class Authentication {
   private email: string;
   private password: string;

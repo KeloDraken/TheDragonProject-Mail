@@ -1,3 +1,4 @@
+import { view } from "@risingstack/react-easy-state";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { TextInput, TouchableOpacity, View } from "react-native";
@@ -6,7 +7,7 @@ import { Authentication } from "../../lib/auth";
 import { AuthenticationInterface } from "../interfaces";
 import { styles } from "./styles";
 
-function _AuthForm(props: AuthenticationInterface): JSX.Element {
+const _AuthForm = view((props: AuthenticationInterface): JSX.Element => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [, setCookie] = useCookies(["UIDT"]);
@@ -16,7 +17,7 @@ function _AuthForm(props: AuthenticationInterface): JSX.Element {
       path: "/",
       maxAge: 2628000,
     });
-    window.location.reload();
+    window.location.replace("/");
   };
 
   let isLogin: boolean;
@@ -95,5 +96,5 @@ function _AuthForm(props: AuthenticationInterface): JSX.Element {
       ) : null}
     </View>
   );
-}
+});
 export default _AuthForm;

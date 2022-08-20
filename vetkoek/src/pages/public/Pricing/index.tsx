@@ -1,9 +1,10 @@
+import { view } from "@risingstack/react-easy-state";
 import { View } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import { Logo, Marquee, Navbar, Text } from "../../../components";
 import { styles } from "./styles";
 
-function Login(): JSX.Element {
+const Login = view((): JSX.Element => {
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
@@ -68,5 +69,5 @@ function Login(): JSX.Element {
       </View>
     </View>
   );
-}
+});
 export default Login;

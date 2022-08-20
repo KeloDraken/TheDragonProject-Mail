@@ -2,10 +2,11 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework_jwt.settings import api_settings
 
 from apps.accounts.models import User
-from apps.accounts.serialisers import CreateUserSerialiser
+from apps.accounts.serialisers import CreateUserSerialiser, UserSerialiser
 
 
 class CreateUserAPIView(CreateAPIView):
@@ -48,3 +49,16 @@ class CreateUserAPIView(CreateAPIView):
 
 
 registration = CreateUserAPIView.as_view()
+
+
+class GetUserObjectID(APIView):
+    def get(self, request: Request):
+        if not self.request.user.is_authenticated:
+            data = {"status_code": 403, "message": "User logged out"}
+            return Response(data=data, status=status.HTTP_200_OK)
+
+        serialiser = UserSerialiser(request.user)
+        return Response(serialiser.data)
+
+
+get_user_id = GetUserObjectID.as_view()
