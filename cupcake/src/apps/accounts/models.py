@@ -54,12 +54,12 @@ class User(AbstractUser):
     profile_pic: str = models.CharField(max_length=3000, null=True, blank=True)
     cover_pic: str = models.CharField(max_length=3000, null=True, blank=True)
     bio: str = models.TextField(null=True, blank=True, max_length=300)
-    app_password: str = models.CharField(max_length=3000, null=True, blank=True)
     has_imported: str = models.BooleanField(default=False)
+    app_password: str = models.CharField(max_length=3000, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.username
-
+        
 
 def asign_object_id_on_profile_created(sender, **kwargs):
     if kwargs["created"]:

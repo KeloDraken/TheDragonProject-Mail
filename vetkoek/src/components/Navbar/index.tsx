@@ -1,8 +1,8 @@
 import { view } from "@risingstack/react-easy-state";
+import { useCookies } from "react-cookie";
 import { View } from "react-native";
 import { Link } from "react-router-dom";
 import { Text } from "../";
-import { userAuth } from "../../store";
 import { styles } from "./styles";
 
 interface NavbarProps {
@@ -61,8 +61,14 @@ const LoggedOut = (props: NavbarProps): JSX.Element => {
 };
 
 const _Navbar = view((props: NavbarProps): JSX.Element => {
+  const [cookies] = useCookies(["ISAUTH"]);
+
   const Nav = (): JSX.Element => {
-    if (userAuth.isLoggedIn) {
+    if (
+      cookies.ISAUTH !== null &&
+      cookies.ISAUTH !== undefined &&
+      cookies.ISAUTH === "true"
+    ) {
       return <LoggedIn />;
     }
     return <LoggedOut />;

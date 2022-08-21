@@ -31,4 +31,6 @@ class UserSerialiser(serializers.ModelSerializer):
             "bio",
             "is_verified",
             "has_imported",
+            "app_password",
         )
+

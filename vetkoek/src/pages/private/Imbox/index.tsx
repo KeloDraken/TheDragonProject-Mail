@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { View } from "react-native";
 import { Logo, Navbar, Text } from "../../../components";
-import { userAuth } from "../../../store";
 import { styles } from "./styles";
 
 const ImboxPage = view((): JSX.Element => {
   const [messages, setMessages] = useState<Array<any>>([]);
-  const [cookies] = useCookies();
+  const [cookies] = useCookies(["IMPORTED", "UIDT"]);
 
   const getImbox = (): void => {
     const endpoint: string = `http://127.0.0.1:8000/mail/imbox/?page=1`;
@@ -26,11 +25,18 @@ const ImboxPage = view((): JSX.Element => {
   };
 
   useEffect((): void => {
-    if (userAuth.hasImported === false) {
+    const token = cookies.IMPORTED;
+    if (
+      token === null ||
+      token === undefined ||
+      token === "false"
+    ) {
+      console.log("HERE");
       window.location.replace("/mail/import");
     }
     getImbox();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cookies.IMPORTED]);
 
   return (
     <View style={styles.container}>
