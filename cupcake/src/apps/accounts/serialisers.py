@@ -30,4 +30,5 @@ class UserSerialiser(serializers.ModelSerializer):
             "display_name",
             "bio",
             "is_verified",
+            "has_imported",
         )

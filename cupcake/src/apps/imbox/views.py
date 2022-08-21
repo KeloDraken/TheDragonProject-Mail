@@ -15,7 +15,9 @@ class ReadImbox(ListAPIView):
     serializer_class = MessageSerialiser
 
     def get_queryset(self):
-        return Message.objects.all().order_by("-received_datetime")
+        return Message.objects.filter(
+            to_users__icontains=self.request.user.username
+        ).order_by("-received_datetime")
 
     def task_get_inbox(self, request):
         messages = read_email(request.user.username, request.user.app_password)

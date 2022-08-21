@@ -55,6 +55,7 @@ class User(AbstractUser):
     cover_pic: str = models.CharField(max_length=3000, null=True, blank=True)
     bio: str = models.TextField(null=True, blank=True, max_length=300)
     app_password: str = models.CharField(max_length=3000, null=True, blank=True)
+    has_imported: str = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.username

@@ -6,7 +6,6 @@ import { useCookies } from "react-cookie";
 import { ActivityIndicator, View } from "react-native";
 
 import { Text } from "../components";
-import { userAuth } from "../store";
 
 import { styles } from "./style";
 
@@ -24,6 +23,13 @@ const Loading = view((): JSX.Element => {
     });
   };
 
+  const checkMailImported = (has_imported: boolean) => {
+    setCookie("IMPORTED", has_imported, {
+      path: "/",
+      maxAge: 2628000,
+    });
+  };
+
   const getUserID = (token: string): void => {
     const endpoint: string = "http://127.0.0.1:8000/accounts/object_id/";
     axios
@@ -35,6 +41,13 @@ const Loading = view((): JSX.Element => {
       .then((response): void => {
         const object_id: string = response.data.object_id;
         const username: string = response.data.username;
+
+        if (response.data.has_imported === true) {
+          checkMailImported(true);
+        } else {
+          checkMailImported(false);
+        }
+
         setUserObjectID(object_id, username);
       });
   };
@@ -43,13 +56,11 @@ const Loading = view((): JSX.Element => {
     const token: string = cookies.UIDT;
 
     if (token !== null && token !== undefined) {
-      userAuth.isLoggedIn = true;
-      const userObjectID: string = cookies.UOID;
-      if (userObjectID === null || userObjectID === undefined) {
-        getUserID(token);
-      }
-    } else {
-      userAuth.isLoggedIn = false;
+      setCookie("ISAUTH", true, {
+        path: "/",
+        maxAge: 2628000,
+      });
+      getUserID(token);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cookies.UIDT, cookies.UOID]);

@@ -1,27 +1,60 @@
+import { view } from "@risingstack/react-easy-state";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { View } from "react-native";
-import { Text } from "../../../components";
-import { Page } from "../../Page";
+import { Logo, Navbar, Text } from "../../../components";
+import { userAuth } from "../../../store";
 import { styles } from "./styles";
 
-class _ImboxPage extends Page {
-  public PageContent(): JSX.Element {
-    return (
-      <View>
-        <View style={styles.description}>
-          <Text size="medium">New for you</Text>
-          <Text>There's nothing for you</Text>
-        </View>
-        <View style={styles.description}>
-          <Text size="medium">Previously seen emails</Text>
-          <Text>There's nothing for you</Text>
-        </View>
-      </View>
-    );
-  }
-}
+const ImboxPage = view((): JSX.Element => {
+  const [messages, setMessages] = useState<Array<any>>([]);
+  const [cookies] = useCookies();
 
-function ImboxPage(): JSX.Element {
-  return new _ImboxPage().render();
-}
+  const getImbox = (): void => {
+    const endpoint: string = `http://127.0.0.1:8000/mail/imbox/?page=1`;
+    axios
+      .get(endpoint, {
+        headers: {
+          Authorization: `Bearer ${cookies.UIDT}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response): void => {
+        setMessages(response.data.results);
+      });
+  };
+
+  useEffect((): void => {
+    if (userAuth.hasImported === false) {
+      window.location.replace("/mail/import");
+    }
+    getImbox();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.navbarContainer}>
+        <Logo />
+        <Navbar />
+      </View>
+      <View style={styles.description}>
+        <Text size="medium">New for you</Text>
+        {messages.map((message, index) => {
+          return (
+            <View style={{ marginVertical: 10 }} key={index}>
+              <Text style={{ color: "red" }}>{message.from_user.fullname}</Text>
+              <Text key={index}>{message.subject}</Text>
+            </View>
+          );
+        })}
+      </View>
+      <View style={styles.description}>
+        <Text size="medium">Previously seen emails</Text>
+        <Text>There's nothing for you</Text>
+      </View>
+    </View>
+  );
+});
 
 export default ImboxPage;
