@@ -1,4 +1,12 @@
+import { View } from "react-native";
+
+import { styles } from "./styles";
+
 function _Footer(): JSX.Element {
-  return <h1>_Footer</h1>;
+  return (
+  <View style={styles.footer}>
+    Text
+  </View>
+    );
 }
 export default _Footer;

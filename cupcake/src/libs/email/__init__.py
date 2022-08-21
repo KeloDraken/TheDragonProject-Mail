@@ -1,33 +1,24 @@
-import imaplib
-import pprint
-from smtplib import SMTPException
+import smtplib
+
+import email
+
+from imapclient import IMAPClient
 
 
-def get_inbox(email: str, password: str) -> None:
-    imap_host = "imap.gmail.com"
-    imap_user = email
-    imap_pass = password
+def read_email(username, password):
+    HOST = "imap.gmail.com"
 
-    # connect to host using SSL
-    imap = imaplib.IMAP4_SSL(imap_host)
+    with IMAPClient(HOST) as server:
+        server.login(username, password)
+        server.select_folder("SENTBOX", readonly=True)
 
-    ## login to server
-    imap.login(imap_user, imap_pass)
-
-    imap.select("Inbox")
-
-    tmp, data = imap.search(None, "ALL")
-    for num in data[0].split():
-        tmp, data = imap.fetch(num, "(RFC822)")
-        print("Message: {0}\n".format(num))
-        pprint.pprint(data[0][1])
-        break
-    imap.close()
+        messages = server.search("UNSEEN")
+        for uid, message_data in server.fetch(messages, "RFC822").items():
+            email_message = email.message_from_bytes(message_data[b"RFC822"])
+            print(uid, email_message.get("From"), email_message.get("Subject"))
 
 
 def send_email():
-    import smtplib
-
     sender = "joymama078@gmail.com"
     receivers = ["jmama021@student.wethinkcode.co.za"]
 
@@ -37,9 +28,11 @@ def send_email():
 
     This is a test e-mail message.
     """
-    smtpObj = smtplib.SMTP_SSL('smtp.gmail.com')
+    smtpObj = smtplib.SMTP_SSL("smtp.gmail.com")
     smtpObj.login(sender, "brdaieqidsbfujvo")
     smtpObj.sendmail(sender, receivers, message)
     print("Successfully sent email")
-    # except SMTPException:
-    #     print("Error: unable to send email")
+
+
+if __name__ == "__main__":
+    read_email("joymama078@gmail.com", "brdaieqidsbfujvo")

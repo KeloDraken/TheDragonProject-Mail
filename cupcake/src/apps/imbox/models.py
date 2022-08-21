@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+
+FLAGS  = (
+    ("DELETED", "DELETED",),
+    ("SEEN", "SEEN",),
+    ("ANSWERED", "ANSWERED",),
+    ("FLAGGED", "FLAGGED",),
+    ("DRAFT", "DRAFT",),
+    ("RECENT", "RECENT",),
+)

@@ -1,19 +1,19 @@
-import React from "react";
 import { View } from "react-native";
 import { Footer, Logo, Navbar } from "../components/";
 import { styles } from "./style";
 
 export class Page {
   public PageContent(): JSX.Element {
-    return <React.Fragment></React.Fragment>;
+    return <></>;
   }
 
   public render(): JSX.Element {
     return (
-      <View style={styles.container}>
-        <this._Navbar />
-        <this.PageContent />
-        <this._Footer />
+      <View>
+        <View style={styles.container}>
+          <this._Navbar />
+          <this.PageContent />
+        </View>
       </View>
     );
   }

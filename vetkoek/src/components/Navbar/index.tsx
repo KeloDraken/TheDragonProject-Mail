@@ -13,9 +13,15 @@ const LoggedIn = (props: NavbarProps): JSX.Element => {
   return (
     <View style={styles.navbarLinkContainer}>
       <View style={styles.navbar}>
-        <Text style={styles.navbarLink}>Imbox</Text>
-        <Text style={styles.navbarLink}>The feed</Text>
-        <Text style={styles.navbarLink}>Paper trail</Text>
+        <Text style={styles.navbarLink}>
+          <Link to="/">Imbox</Link>
+        </Text>
+        <Text style={styles.navbarLink}>
+          <Link to="/">The feed</Link>
+        </Text>
+        <Text style={styles.navbarLink}>
+          <Link to="/">Paper trail</Link>
+        </Text>
       </View>
       <Text style={[styles.navbarLink, styles.accountLink]}>More</Text>
     </View>
