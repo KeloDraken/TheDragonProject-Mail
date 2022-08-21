@@ -9,7 +9,7 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("apps.accounts.urls", namespace="accounts")),
-    path("imbox/", include("apps.imbox.urls", namespace="imbox")),
+    path("mail/", include("apps.imbox.urls", namespace="imbox")),
 ]
 
 admin.site.site_header = "KeloDraken Mail Admin"
