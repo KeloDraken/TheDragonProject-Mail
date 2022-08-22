@@ -1,8 +1,14 @@
 from datetime import datetime
+
 from django.db import models
+from django.db.models.signals import post_save
+
+from libs.utils.helpers import object_id_generator
 
 
 class EmailAddress(models.Model):
+    object_id: str = models.CharField(max_length=50, null=True, blank=True)
+
     IMBOX_CHOICES = (
         (
             "IMBOX",
@@ -31,7 +37,22 @@ class EmailAddress(models.Model):
         return self.email_address
 
 
+def asign_id_and_pic_on_created(sender, **kwargs):
+    if kwargs["created"]:
+        email: EmailAddress = kwargs["instance"]
+        email.object_id = object_id_generator(30, EmailAddress)
+        email.profile_pic = (
+            f"https://ui-avatars.com/api/?size=128&name={email.email_address}"
+        )
+        email.save()
+
+
+post_save.connect(asign_id_and_pic_on_created, sender=EmailAddress)
+
+
 class Message(models.Model):
+    object_id: str = models.CharField(max_length=50, null=True, blank=True)
+
     msg_uid = models.CharField(max_length=3000000, blank=True, null=True)
 
     from_user: EmailAddress = models.ForeignKey(
@@ -58,3 +79,13 @@ class Message(models.Model):
 
     def __str__(self) -> str:
         return self.from_user.fullname
+
+
+def asign_object_id_on_message_created(sender, **kwargs):
+    if kwargs["created"]:
+        message: Message = kwargs["instance"]
+        message.object_id = object_id_generator(30, Message)
+        message.save()
+
+
+post_save.connect(asign_object_id_on_message_created, sender=Message)
