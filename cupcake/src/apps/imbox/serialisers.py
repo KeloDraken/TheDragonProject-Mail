@@ -9,6 +9,7 @@ class MessageSerialiser(serializers.ModelSerializer):
         return {
             "id": msg.from_user.id,
             "email_address": msg.from_user.email_address,
+            "profile_pic": msg.from_user.profile_pic,
             "fullname": msg.from_user.fullname,
         }
 

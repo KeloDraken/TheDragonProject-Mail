@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { View } from "react-native";
-import { Logo, Navbar, Text } from "../../../components";
+import { ImboxItem, Logo, Navbar, Text } from "../../../components";
 import { styles } from "./styles";
 
 const ImboxPage = view((): JSX.Element => {
@@ -26,11 +26,7 @@ const ImboxPage = view((): JSX.Element => {
 
   useEffect((): void => {
     const token = cookies.IMPORTED;
-    if (
-      token === null ||
-      token === undefined ||
-      token === "false"
-    ) {
+    if (token === null || token === undefined || token === "false") {
       console.log("HERE");
       window.location.replace("/mail/import");
     }
@@ -47,12 +43,7 @@ const ImboxPage = view((): JSX.Element => {
       <View style={styles.description}>
         <Text size="medium">New for you</Text>
         {messages.map((message, index) => {
-          return (
-            <View style={{ marginVertical: 10 }} key={index}>
-              <Text style={{ color: "red" }}>{message.from_user.email_address}</Text>
-              <Text key={index}>{message.subject}</Text>
-            </View>
-          );
+          return <ImboxItem key={index} item={message} />;
         })}
       </View>
       <View style={styles.description}>

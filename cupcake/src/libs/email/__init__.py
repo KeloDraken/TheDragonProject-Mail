@@ -1,4 +1,6 @@
 import email
+from email.header import Header, decode_header, make_header
+
 import smtplib
 from typing import Dict, List
 
@@ -13,11 +15,13 @@ def _get_messages(server, messages):
 
         message["uid"] = uid
         message["from"] = email_message.get("From")
-        message["subject"] = email_message.get("Subject")
+
+        subject = make_header(decode_header(email_message.get("Subject")))
+        message["subject"] = subject
         message["body"] = "Not the real email body"
 
         _messages.append(message)
-
+        print("Imported", uid)
     return _messages
 
 
