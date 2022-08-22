@@ -1,3 +1,4 @@
+from typing import List
 from rest_framework import status
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.request import Request
@@ -40,10 +41,16 @@ class ImportInbox(APIView):
         user.has_imported = True
         user.save()
         return Response(status=status.HTTP_200_OK, data=data)
+    
+    def extract_email(self, string:str) -> List[str]:
+        import re
+        match = re.findall(r'[\w.+-]+@[\w-]+\.[\w.-]+', string)
+        return match
 
     def insert_msg_into_db(self, user, messages):
         for message in messages:
             from_user, created = EmailAddress.objects.get_or_create(
+                email_address=self.extract_email(message.get("from"))[0],
                 fullname=message.get("from")
             )
             obj, created = Message.objects.get_or_create(

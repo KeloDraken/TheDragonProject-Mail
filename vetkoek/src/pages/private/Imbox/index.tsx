@@ -49,7 +49,7 @@ const ImboxPage = view((): JSX.Element => {
         {messages.map((message, index) => {
           return (
             <View style={{ marginVertical: 10 }} key={index}>
-              <Text style={{ color: "red" }}>{message.from_user.fullname}</Text>
+              <Text style={{ color: "red" }}>{message.from_user.email_address}</Text>
               <Text key={index}>{message.subject}</Text>
             </View>
           );

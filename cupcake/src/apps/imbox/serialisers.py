@@ -8,6 +8,7 @@ class MessageSerialiser(serializers.ModelSerializer):
     def get_from_user(self, msg):
         return {
             "id": msg.from_user.id,
+            "email_address": msg.from_user.email_address,
             "fullname": msg.from_user.fullname,
         }
 

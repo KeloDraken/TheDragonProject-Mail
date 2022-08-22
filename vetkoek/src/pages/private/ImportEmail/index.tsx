@@ -94,8 +94,16 @@ const ImportEmail = view((): JSX.Element => {
         <Text size="large">Import your emails from Gmail</Text>
         <Text size="small">
           To get started using KeloDraken, you'll need to import your inbox from
-          Gmail. To do that, you'll need to follow these steps to get an app
-          password
+          Gmail. To do that, you'll need to{" "}
+          <a
+            title="How to create a Google app password"
+            target={"_blank"}
+            rel="noreferrer"
+            style={{ textDecoration: "underline" }}
+            href="https://support.google.com/mail/answer/185833?hl=en"
+          >
+            follow these steps to get an app password
+          </a>.
         </Text>
         <View style={styles.formContainer}>
           <TextInput

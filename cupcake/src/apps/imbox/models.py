@@ -4,9 +4,18 @@ from django.db import models
 
 class EmailAddress(models.Model):
     IMBOX_CHOICES = (
-        ("IMBOX", "IMBOX",),
-        ("FEED", "FEED",),
-        ("PAPERTRAIL", "PAPERTRAIL",)
+        (
+            "IMBOX",
+            "IMBOX",
+        ),
+        (
+            "FEED",
+            "FEED",
+        ),
+        (
+            "PAPERTRAIL",
+            "PAPERTRAIL",
+        ),
     )
     email_address: str = models.CharField(max_length=255, null=True, blank=True)
     profile_pic: str = models.CharField(max_length=255, null=True, blank=True)
@@ -15,12 +24,11 @@ class EmailAddress(models.Model):
     nickname: str = models.CharField(max_length=255, null=True, blank=True)
     screed_in: bool = models.BooleanField(default=True, null=False, blank=False)
     inbox: bool = models.CharField(
-        choices=IMBOX_CHOICES,
-        max_length=255,
-        null=False,
-        blank=False,
-        default="IMBOX"
+        choices=IMBOX_CHOICES, max_length=255, null=False, blank=False, default="IMBOX"
     )
+
+    def __str__(self):
+        return self.email_address
 
 
 class Message(models.Model):
@@ -31,7 +39,7 @@ class Message(models.Model):
         related_name="from_user",
         on_delete=models.CASCADE,
         null=False,
-        blank=True
+        blank=True,
     )
     to_users: str = models.TextField(null=False, blank=True)
 

@@ -11,7 +11,7 @@ def _get_messages(server, messages):
         message: Dict[str, str] = dict()
         email_message = email.message_from_bytes(message_data[b"RFC822"])
 
-        message['uid'] = uid
+        message["uid"] = uid
         message["from"] = email_message.get("From")
         message["subject"] = email_message.get("Subject")
         message["body"] = "Not the real email body"
