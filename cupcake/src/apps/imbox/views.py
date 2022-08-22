@@ -1,9 +1,12 @@
 from typing import List
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
+
+from django.shortcuts import get_object_or_404
 
 from apps.accounts.models import User
 from apps.accounts.serialisers import UserSerialiser
@@ -41,17 +44,18 @@ class ImportInbox(APIView):
         user.has_imported = True
         user.save()
         return Response(status=status.HTTP_200_OK, data=data)
-    
-    def extract_email(self, string:str) -> List[str]:
+
+    def extract_email(self, string: str) -> List[str]:
         import re
-        match = re.findall(r'[\w.+-]+@[\w-]+\.[\w.-]+', string)
+
+        match = re.findall(r"[\w.+-]+@[\w-]+\.[\w.-]+", string)
         return match
 
-    def insert_msg_into_db(self, user, messages):
+    def insert_msg_into_db(self, user: User, messages):
         for message in messages:
             from_user, created = EmailAddress.objects.get_or_create(
                 email_address=self.extract_email(message.get("from"))[0],
-                fullname=message.get("from")
+                fullname=message.get("from"),
             )
             obj, created = Message.objects.get_or_create(
                 msg_uid=message.get("uid"),
@@ -64,3 +68,12 @@ class ImportInbox(APIView):
 
 
 import_inbox = ImportInbox.as_view()
+
+
+class GetEmailMessage(ListAPIView):
+   serializer_class = MessageSerialiser
+
+   def get_queryset(self):
+      queryset = Message.objects.filter(object_id=self.kwargs['object_id'])
+      return queryset
+get_message = GetEmailMessage.as_view()

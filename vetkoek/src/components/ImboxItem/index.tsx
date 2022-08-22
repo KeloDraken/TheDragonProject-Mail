@@ -5,7 +5,7 @@ import { Text } from "../../components";
 import { styles } from "./styles";
 
 interface ImboxItem {
-  id: number;
+  object_id: string;
   from_user?: {
     id?: number;
     email_address: string;
@@ -23,6 +23,9 @@ interface Props {
 }
 
 const _ImboxItem: React.FC<Props> = ({ item }): JSX.Element => {
+  const source = {
+    html: item.body,
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -37,10 +40,7 @@ const _ImboxItem: React.FC<Props> = ({ item }): JSX.Element => {
           {item.from_user!.email_address}
         </Text>
         <Text>{item.subject}</Text>
-        {/* <ReactTimeAgo
-          style={styles.timeReceived}
-          date={Date.parse(item!.received_datetime)}
-        /> */}
+
         <View style={styles.metaData}>
           <Text style={styles.timeReceived}>6 hours ago</Text>
           <Text style={[styles.timeReceived, styles.pipe]}>|</Text>

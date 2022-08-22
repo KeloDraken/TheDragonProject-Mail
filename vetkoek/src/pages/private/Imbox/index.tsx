@@ -27,7 +27,6 @@ const ImboxPage = view((): JSX.Element => {
   useEffect((): void => {
     const token = cookies.IMPORTED;
     if (token === null || token === undefined || token === "false") {
-      console.log("HERE");
       window.location.replace("/mail/import");
     }
     getImbox();

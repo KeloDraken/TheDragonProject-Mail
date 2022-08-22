@@ -2,7 +2,7 @@ import { view } from "@risingstack/react-easy-state";
 import { lazy, Suspense } from "react";
 import { useCookies } from "react-cookie";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ImportEmailsPage } from "../pages";
+import { ImportEmailsPage, ViewEmailPage } from "../pages";
 import Loading from "./Loading";
 
 const LandingPage = lazy(() => import("../pages/public/Landing"));
@@ -32,6 +32,7 @@ function Navigator(): JSX.Element {
 
           {/* Authenticated user routes */}
           <Route element={<ImportEmailsPage />} path="/mail/import" />
+          <Route element={<ViewEmailPage />} path="/mail/:id" />
         </Routes>
       </Router>
     </Suspense>
