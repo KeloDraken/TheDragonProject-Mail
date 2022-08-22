@@ -21,4 +21,5 @@ class MessageSerialiser(serializers.ModelSerializer):
             "to_users",
             "subject",
             "body",
+            "received_datetime",
         )

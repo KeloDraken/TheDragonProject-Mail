@@ -1,5 +1,6 @@
 import React from "react";
-import { View } from "react-native";
+import { Image, View } from "react-native";
+// import ReactTimeAgo from "react-time-ago";
 import { Text } from "../../components";
 import { styles } from "./styles";
 
@@ -7,13 +8,14 @@ interface ImboxItem {
   id: number;
   from_user?: {
     id?: number;
-    email_address?: string;
-    fullname?: string;
-    profile_pic?: string;
+    email_address: string;
+    fullname: string;
+    profile_pic: string;
   };
   to_users: string;
   subject: string | null | undefined;
   body: string;
+  received_datetime: string;
 }
 
 interface Props {
@@ -23,7 +25,30 @@ interface Props {
 const _ImboxItem: React.FC<Props> = ({ item }): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Text>{item.subject}</Text>
+      <Image
+        accessible={false}
+        source={{ uri: item.from_user!.profile_pic }}
+        resizeMode={"contain"}
+        style={styles.profilePic}
+      />
+
+      <View style={styles.itemInfoContainer}>
+        <Text style={styles.itemFromUserEmail}>
+          {item.from_user!.email_address}
+        </Text>
+        <Text>{item.subject}</Text>
+        {/* <ReactTimeAgo
+          style={styles.timeReceived}
+          date={Date.parse(item!.received_datetime)}
+        /> */}
+        <View style={styles.metaData}>
+          <Text style={styles.timeReceived}>6 hours ago</Text>
+          <Text style={[styles.timeReceived, styles.pipe]}>|</Text>
+          <Text style={[styles.timeReceived, styles.icon]}>
+            <span className="material-icons-outlined">archive</span>
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };

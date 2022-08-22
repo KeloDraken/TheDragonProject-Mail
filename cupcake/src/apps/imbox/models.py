@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 from django.db import models
 from django.db.models.signals import post_save
@@ -37,13 +38,16 @@ class EmailAddress(models.Model):
         return self.email_address
 
 
+def get_email_tld(email: str) -> str:
+    domain = re.search("@[\w.]+", email)
+    return domain.group().split("@")[1]
+
+
 def asign_id_and_pic_on_created(sender, **kwargs):
     if kwargs["created"]:
         email: EmailAddress = kwargs["instance"]
         email.object_id = object_id_generator(30, EmailAddress)
-        email.profile_pic = (
-            f"https://ui-avatars.com/api/?size=128&name={email.email_address}"
-        )
+        email.profile_pic = f"https://ui-avatars.com/api/?size=128&name={get_email_tld(email.email_address)}"
         email.save()
 
 

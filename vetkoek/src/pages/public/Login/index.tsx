@@ -15,7 +15,7 @@ const Login = view((): JSX.Element => {
     ) {
       window.location.replace("/");
     }
-  }, []);
+  }, [cookies.ISAUTH]);
 
   return (
     <View style={styles.container}>
