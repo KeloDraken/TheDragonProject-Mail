@@ -1,3 +1,4 @@
+from typing import Any
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.request import Request
@@ -18,7 +19,7 @@ class CreateUserAPIView(CreateAPIView):
     serializer_class = CreateUserSerialiser
     permission_classes = [AllowAny]
 
-    def login_user_after_register(self, username: str):
+    def login_user_after_register(self, username: str) -> Any | list | None:
         """
         Logs in user after registration
         """
@@ -28,7 +29,7 @@ class CreateUserAPIView(CreateAPIView):
         payload = jwt_payload_handler(user)
         return jwt_encode_handler(payload)
 
-    def post(self, request: Request, *args, **kwargs):
+    def post(self, request: Request, *args, **kwargs) -> Response:
         """
         Handles post request
         """
@@ -54,7 +55,7 @@ registration = CreateUserAPIView.as_view()
 
 
 class GetUserObjectID(APIView):
-    def get(self, request: Request):
+    def get(self, request: Request) -> Response:
         if not self.request.user.is_authenticated:
             data = {"status_code": 403, "message": "User logged out"}
             return Response(data=data, status=status.HTTP_200_OK)
