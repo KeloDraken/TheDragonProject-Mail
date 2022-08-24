@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, View } from "react-native";
+import { Link } from "react-router-dom";
 // import ReactTimeAgo from "react-time-ago";
 import { Text } from "../../components";
 import { styles } from "./styles";
@@ -23,9 +24,6 @@ interface Props {
 }
 
 const _ImboxItem: React.FC<Props> = ({ item }): JSX.Element => {
-  const source = {
-    html: item.body,
-  };
   return (
     <View style={styles.container}>
       <Image
@@ -39,7 +37,10 @@ const _ImboxItem: React.FC<Props> = ({ item }): JSX.Element => {
         <Text style={styles.itemFromUserEmail}>
           {item.from_user!.email_address}
         </Text>
-        <Text>{item.subject}</Text>
+
+        <Link to={`/mail/${item.object_id}`}>
+          <Text>{item.subject}</Text>
+        </Link>
 
         <View style={styles.metaData}>
           <Text style={styles.timeReceived}>6 hours ago</Text>

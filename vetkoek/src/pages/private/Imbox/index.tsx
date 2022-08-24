@@ -39,14 +39,17 @@ const ImboxPage = view((): JSX.Element => {
         <Logo />
         <Navbar />
       </View>
+      <View style={styles.pageHeading}>
+        <Text size="medium">Imbox</Text>
+      </View>
       <View style={styles.description}>
-        <Text size="medium">New for you</Text>
+        <Text size="small">New for you</Text>
         {messages.map((message, index) => {
           return <ImboxItem key={index} item={message} />;
         })}
       </View>
       <View style={styles.description}>
-        <Text size="medium">Previously seen emails</Text>
+        <Text size="small">Previously seen emails</Text>
         <Text>There's nothing for you</Text>
       </View>
     </View>

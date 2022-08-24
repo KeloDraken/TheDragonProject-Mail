@@ -21,4 +21,16 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  emailContainer: {
+    flexDirection: "row",
+    alignSelf: "center",
+    overflow: "hidden",
+    marginLeft: widthPercentageToDP("15"),
+    width: widthPercentageToDP("60"),
+  },
+  pageHeading: {
+    marginTop: heightPercentageToDP("7"),
+    flexDirection: "column",
+    textAlign: "center",
+  },
 });

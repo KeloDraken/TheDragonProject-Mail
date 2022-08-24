@@ -14,11 +14,16 @@ export const styles = StyleSheet.create({
     fontWeight: "900",
   },
   description: {
-    marginVertical: heightPercentageToDP("5"),
-    marginRight: widthPercentageToDP("3"),
+    marginBottom: heightPercentageToDP("5"),
+    marginLeft: widthPercentageToDP("5"),
   },
   navbarContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  pageHeading: {
+    marginTop: heightPercentageToDP("7"),
+    flexDirection: "column",
+    textAlign: "center",
   },
 });

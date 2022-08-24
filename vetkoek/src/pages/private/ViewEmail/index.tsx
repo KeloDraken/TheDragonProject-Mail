@@ -43,6 +43,7 @@ function ViewEmail(): JSX.Element {
 
   useEffect((): void => {
     handleGetPost();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -51,15 +52,24 @@ function ViewEmail(): JSX.Element {
         <Logo />
         <Navbar />
       </View>
-      <View style={styles.description}>
+      <View style={styles.pageHeading}>
         {loading ? (
           <Text size="medium">loading...</Text>
         ) : (
           email.map((item, index) => {
             return (
-              <View key={index}>
-                <Text size="medium">{item.subject}</Text>
-                <span dangerouslySetInnerHTML={{__html: item.body}} />
+              <View style={{ backgroundColor: "#ffffff" }} key={index}>
+                <Text size="small">{item.subject}</Text>
+                <View style={styles.emailContainer}>
+                  <div dangerouslySetInnerHTML={{ __html: item.body }} />
+                  {/* <iframe
+                    height="100%"
+                    width="100%"
+                    srcDoc={item.body}
+                    frameBorder="0"
+                    
+                  ></iframe> */}
+                </View>
               </View>
             );
           })

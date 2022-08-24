@@ -14,11 +14,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginVertical: heightPercentageToDP("2"),
   },
-  modalContainer: {
-    display: "flex",
-    flexDirection: "row",
-    backgroundColor: "#ffffff",
-  },
   profilePic: {
     width: widthPercentageToDP("6"),
     height: widthPercentageToDP("6"),
