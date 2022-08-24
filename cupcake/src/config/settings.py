@@ -3,18 +3,23 @@ Project settings
 """
 
 import datetime
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = (
-    "?E(H+MbQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$B&E("
-    "H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2r5u8x/A?D("
-    "G+KbPdSgVkYp3s6v9y$B&E)H@McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x/A?D("
-    "G+KbPeShVmYq3t6v9y$B&E)H@McQfTjWnZr4u7x!z%C*F-JaNdRgUkXp2s5v8y/B?D(G+KbPeSh "
-)
-
 DEBUG = True
+
+if DEBUG:
+    SECRET_KEY = (
+        "?E(H+MbQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$B&E("
+        "H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2r5u8x/A?D("
+        "G+KbPdSgVkYp3s6v9y$B&E)H@McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x/A?D("
+        "G+KbPeShVmYq3t6v9y$B&E)H@McQfTjWnZr4u7x!z%C*F-JaNdRgUkXp2s5v8y/B?D(G+KbPeSh "
+    )
+else:
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
 
 ALLOWED_HOSTS = ["*"]
 
@@ -92,7 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Africa/Johannesburg"
 
 USE_I18N = True
 
