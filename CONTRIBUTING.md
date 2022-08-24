@@ -36,13 +36,10 @@ Navigate to `/vetkoek`
 Navigate to `/cupcake`
 
 ```shell
-$ mkvirtualenv env
-$ source env/bin/activate (Mac/Linux)
-$ env\Scripts\activate (Windows)
-$ (env) make
-$ (env) python src/manage.py migrate
-$ (env) python src/manage.py createsuperuser
-$ (env) make serve
+$ make
+$ python src/manage.py migrate
+$ python src/manage.py createsuperuser
+$ make serve
 ```
 
 ## Issues
